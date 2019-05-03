@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Pill.create!(name: 'Selegiline', img:'https://www.drugs.com/images/pills/nlm/605050055.jpg', mg: 5)
+Pill.create!(name: 'Amantadine', img:'https://images.agoramedia.com/everydayhealth/drugs/images/multum/Amantadine%20100%20mg-UDL.jpg', mg:100)

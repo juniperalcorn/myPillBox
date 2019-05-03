@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  pill: one
+  am_dose: 1
+  mid_dose: 1
+  pm_dose: 1
+  bed_dose: 1
+
+two:
+  user: two
+  pill: two
+  am_dose: 1
+  mid_dose: 1
+  pm_dose: 1
+  bed_dose: 1
