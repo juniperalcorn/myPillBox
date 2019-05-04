@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     has_many :doses
-    has_many :pills, through :doses
+    has_many :pills, through: :doses
     has_secure_password
 
     validates :username, presence: true, uniqueness: true
