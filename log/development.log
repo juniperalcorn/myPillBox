@@ -318,3 +318,295 @@ Completed 200 OK in 32ms (Views: 30.7ms | ActiveRecord: 0.4ms)
   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
   [1m[36mPill Create (0.3ms)[0m  [1m[32mINSERT INTO "pills" ("name", "img", "mg", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Selegiline"], ["img", "https://www.drugs.com/images/pills/nlm/605050055.jpg"], ["mg", 5], ["created_at", "2019-05-03 19:46:17.781253"], ["updated_at", "2019-05-03 19:46:17.781253"]]
   [1m[35m (40.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2806663968988704930)[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to ChangeDosageTableName (20190503205622)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (43.0ms)[0m  [1m[35mALTER TABLE "dosage" RENAME TO "dose"[0m
+  ↳ db/migrate/20190503205622_change_dosage_table_name.rb:3
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2806663968988704930)[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2806663968988704930)[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to ChangeDosageTableName (20190503205622)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "dosages" RENAME TO "doses"[0m
+  ↳ db/migrate/20190503205622_change_dosage_table_name.rb:3
+  [1m[35m (0.5ms)[0m  [1m[35mALTER INDEX "dosages_pkey" RENAME TO "doses_pkey"[0m
+  ↳ db/migrate/20190503205622_change_dosage_table_name.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "public"."dosages_id_seq" RENAME TO "doses_id_seq"[0m
+  ↳ db/migrate/20190503205622_change_dosage_table_name.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mALTER INDEX "index_dosages_on_pill_id" RENAME TO "index_doses_on_pill_id"[0m
+  ↳ db/migrate/20190503205622_change_dosage_table_name.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mALTER INDEX "index_dosages_on_user_id" RENAME TO "index_doses_on_user_id"[0m
+  ↳ db/migrate/20190503205622_change_dosage_table_name.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190503205622"]]
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2806663968988704930)[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2806663968988704930)[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateDoses (20190503210248)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (45.1ms)[0m  [1m[35mCREATE TABLE "doses" ("id" bigserial primary key, "user_id" bigint, "pill_id" bigint, "am_dose" integer, "mid_dose" integer, "pm_dose" integer, "bed_dose" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_1fe5eba59d"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_67563b10e4"
+FOREIGN KEY ("pill_id")
+  REFERENCES "pills" ("id")
+)[0m
+  ↳ db/migrate/20190503210248_create_doses.rb:3
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2806663968988704930)[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (204.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "pill-organizer_development"[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (207.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "pill-organizer_test"[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (516.9ms)[0m  [1m[35mCREATE DATABASE "pill-organizer_development" ENCODING = 'unicode'[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (471.7ms)[0m  [1m[35mCREATE DATABASE "pill-organizer_test" ENCODING = 'unicode'[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2806663968988704930)[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateUsers (20190503184534)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (44.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190503184534_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190503184534"]]
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreatePills (20190503191449)
+  [1m[35m (40.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "pills" ("id" bigserial primary key, "name" character varying, "img" character varying, "mg" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190503191449_create_pills.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190503191449"]]
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateDoses (20190503210248)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "doses" ("id" bigserial primary key, "user_id" bigint, "pill_id" bigint, "am_dose" integer, "mid_dose" integer, "pm_dose" integer, "bed_dose" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_1fe5eba59d"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_67563b10e4"
+FOREIGN KEY ("pill_id")
+  REFERENCES "pills" ("id")
+)[0m
+  ↳ db/migrate/20190503210248_create_doses.rb:3
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_doses_on_user_id" ON "doses"  ("user_id")[0m
+  ↳ db/migrate/20190503210248_create_doses.rb:3
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_doses_on_pill_id" ON "doses"  ("pill_id")[0m
+  ↳ db/migrate/20190503210248_create_doses.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190503210248"]]
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-05-03 21:04:55.870395"], ["updated_at", "2019-05-03 21:04:55.870395"]]
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2806663968988704930)[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2806663968988704930)[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to ChangeColumnDosesMgToString (20190504230821)
+  [1m[35m (39.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (5.5ms)[0m  [1m[35mALTER TABLE "doses" ALTER COLUMN "mg" TYPE character varying[0m
+  ↳ db/migrate/20190504230821_change_column_doses_mg_to_string.rb:3
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2806663968988704930)[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2806663968988704930)[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to ChangeColumnDosesMgToString (20190504230821)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (55.0ms)[0m  [1m[35mALTER TABLE "pills" ALTER COLUMN "mg" TYPE character varying[0m
+  ↳ db/migrate/20190504230821_change_column_doses_mg_to_string.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190504230821"]]
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2806663968988704930)[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:13
+  [1m[36mPill Create (2.1ms)[0m  [1m[32mINSERT INTO "pills" ("name", "img", "mg", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Carbidopa-levodopa"], ["img", "https://www.drugs.com/images/pills/nlm/200000246.jpg"], ["mg", "25-100"], ["created_at", "2019-05-04 23:34:12.690900"], ["updated_at", "2019-05-04 23:34:12.690900"]]
+  ↳ db/seeds.rb:13
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[36mPill Create (1.0ms)[0m  [1m[32mINSERT INTO "pills" ("name", "img", "mg", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Clonazepam"], ["img", "data:image/jpeg;base64,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"], ["mg", "0.5"], ["created_at", "2019-05-04 23:34:12.695093"], ["updated_at", "2019-05-04 23:34:12.695093"]]
+  ↳ db/seeds.rb:14
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mPill Create (0.2ms)[0m  [1m[32mINSERT INTO "pills" ("name", "img", "mg", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Fludrocortisone"], ["img", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi3bmdQ_ZwTa3uxRArpCxJMzL9d0FqRInD03LmqFN55PBSVMqu"], ["mg", ".1"], ["created_at", "2019-05-04 23:34:12.697714"], ["updated_at", "2019-05-04 23:34:12.697714"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mPill Create (0.5ms)[0m  [1m[32mINSERT INTO "pills" ("name", "img", "mg", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Citalopram"], ["img", "https://img.medscapestatic.com/pi/features/drugdirectory/octupdate/MYN62310.jpg"], ["mg", "10"], ["created_at", "2019-05-04 23:34:12.699279"], ["updated_at", "2019-05-04 23:34:12.699279"]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mPill Create (0.6ms)[0m  [1m[32mINSERT INTO "pills" ("name", "img", "mg", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Seroquel"], ["img", "data:image/jpeg;base64,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"], ["mg", "25"], ["created_at", "2019-05-04 23:34:12.701378"], ["updated_at", "2019-05-04 23:34:12.701378"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mPill Create (0.2ms)[0m  [1m[32mINSERT INTO "pills" ("name", "img", "mg", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Selegiline"], ["img", "https://www.drugs.com/images/pills/nlm/605050055.jpg"], ["mg", "5"], ["created_at", "2019-05-04 23:34:12.703382"], ["updated_at", "2019-05-04 23:34:12.703382"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mPill Create (0.2ms)[0m  [1m[32mINSERT INTO "pills" ("name", "img", "mg", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Amantadine"], ["img", "https://images.agoramedia.com/everydayhealth/drugs/images/multum/Amantadine%20100%20mg-UDL.jpg"], ["mg", "100"], ["created_at", "2019-05-04 23:34:12.704771"], ["updated_at", "2019-05-04 23:34:12.704771"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mPill Create (0.2ms)[0m  [1m[32mINSERT INTO "pills" ("name", "img", "mg", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Multivitamin"], ["img", "https://sc01.alicdn.com/kf/HTB1pFDJPXXXXXbzXFXXq6xXFXXXj/high-quality-best-Multivitamin-tablets-with-minerals.jpg_350x350.jpg"], ["mg", "half"], ["created_at", "2019-05-04 23:34:12.706161"], ["updated_at", "2019-05-04 23:34:12.706161"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:26
+  [1m[36mPill Create (0.2ms)[0m  [1m[32mINSERT INTO "pills" ("name", "img", "mg", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Pantoprazole"], ["img", "https://www.drugs.com/images/pills/nlm/433530338.jpg"], ["mg", "40"], ["created_at", "2019-05-04 23:34:12.707595"], ["updated_at", "2019-05-04 23:34:12.707595"]]
+  ↳ db/seeds.rb:26
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mPill Create (0.2ms)[0m  [1m[32mINSERT INTO "pills" ("name", "img", "mg", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Bupropion"], ["img", "https://img.medscapestatic.com/pi/features/drugdirectory/octupdate/TEV53500.jpg"], ["mg", "150"], ["created_at", "2019-05-04 23:34:12.709017"], ["updated_at", "2019-05-04 23:34:12.709017"]]
+  ↳ db/seeds.rb:27
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:28
+  [1m[36mPill Create (0.2ms)[0m  [1m[32mINSERT INTO "pills" ("name", "img", "mg", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Citalopram"], ["img", "https://img.medscapestatic.com/pi/features/drugdirectory/octupdate/MYN62320.jpg"], ["mg", "20"], ["created_at", "2019-05-04 23:34:12.710548"], ["updated_at", "2019-05-04 23:34:12.710548"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mPill Create (0.3ms)[0m  [1m[32mINSERT INTO "pills" ("name", "img", "mg", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Cartia"], ["img", "https://www.drugs.com/images/pills/nlm/620370597.jpg"], ["mg", "120"], ["created_at", "2019-05-04 23:34:12.711984"], ["updated_at", "2019-05-04 23:34:12.711984"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:30
+  [1m[36mPill Create (0.2ms)[0m  [1m[32mINSERT INTO "pills" ("name", "img", "mg", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Furosemide"], ["img", "https://img.medscapestatic.com/pi/features/drugdirectory/octupdate/ABC00215.jpg"], ["mg", "40"], ["created_at", "2019-05-04 23:34:12.713694"], ["updated_at", "2019-05-04 23:34:12.713694"]]
+  ↳ db/seeds.rb:30
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:30
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:31
+  [1m[36mPill Create (0.2ms)[0m  [1m[32mINSERT INTO "pills" ("name", "img", "mg", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Xeljanz"], ["img", "https://img.medscapestatic.com/pi/features/drugdirectory/octupdate/PFZ10010.jpg"], ["mg", "5"], ["created_at", "2019-05-04 23:34:12.715273"], ["updated_at", "2019-05-04 23:34:12.715273"]]
+  ↳ db/seeds.rb:31
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:31
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:32
+  [1m[36mPill Create (0.2ms)[0m  [1m[32mINSERT INTO "pills" ("name", "img", "mg", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Avapro"], ["img", "https://img.medscapestatic.com/pi/features/drugdirectory/octupdate/WIN10410.jpg"], ["mg", "150"], ["created_at", "2019-05-04 23:34:12.716972"], ["updated_at", "2019-05-04 23:34:12.716972"]]
+  ↳ db/seeds.rb:32
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:32
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:33
+  [1m[36mPill Create (0.2ms)[0m  [1m[32mINSERT INTO "pills" ("name", "img", "mg", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Crestor"], ["img", "https://images.agoramedia.com/everydayhealth/drugs/images/multum/Crestor%2010%20mg.jpg"], ["mg", "20"], ["created_at", "2019-05-04 23:34:12.718549"], ["updated_at", "2019-05-04 23:34:12.718549"]]
+  ↳ db/seeds.rb:33
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:33
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:34
+  [1m[36mPill Create (0.2ms)[0m  [1m[32mINSERT INTO "pills" ("name", "img", "mg", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Singulair"], ["img", "https://images.rxlist.com/images/multum/000069117_pb.jpg"], ["mg", "10"], ["created_at", "2019-05-04 23:34:12.719967"], ["updated_at", "2019-05-04 23:34:12.719967"]]
+  ↳ db/seeds.rb:34
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:34
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:37
+  [1m[36mPill Create (0.2ms)[0m  [1m[32mINSERT INTO "pills" ("name", "img", "mg", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Oxycontin"], ["img", "https://www.cvs.com/webcontent/images/drug/DrugItem_13650.JPG"], ["mg", "10"], ["created_at", "2019-05-04 23:34:12.721443"], ["updated_at", "2019-05-04 23:34:12.721443"]]
+  ↳ db/seeds.rb:37
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:37
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:38
+  [1m[36mPill Create (0.2ms)[0m  [1m[32mINSERT INTO "pills" ("name", "img", "mg", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Zyrtec"], ["img", "https://img.medscapestatic.com/pi/features/drugdirectory/octupdate/MCN02040.jpg"], ["mg", "10"], ["created_at", "2019-05-04 23:34:12.722961"], ["updated_at", "2019-05-04 23:34:12.722961"]]
+  ↳ db/seeds.rb:38
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:38

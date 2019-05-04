@@ -1,6 +1,6 @@
-class CreateDosages < ActiveRecord::Migration[5.2]
+class CreateDoses < ActiveRecord::Migration[5.2]
   def change
-    create_table :dosages do |t|
+    create_table :doses do |t|
       t.references :user, foreign_key: true
       t.references :pill, foreign_key: true
       t.integer :am_dose

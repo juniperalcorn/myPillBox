@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_03_191614) do
+ActiveRecord::Schema.define(version: 2019_05_04_230821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "dosages", force: :cascade do |t|
+  create_table "doses", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "pill_id"
     t.integer "am_dose"
@@ -24,14 +24,14 @@ ActiveRecord::Schema.define(version: 2019_05_03_191614) do
     t.integer "bed_dose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["pill_id"], name: "index_dosages_on_pill_id"
-    t.index ["user_id"], name: "index_dosages_on_user_id"
+    t.index ["pill_id"], name: "index_doses_on_pill_id"
+    t.index ["user_id"], name: "index_doses_on_user_id"
   end
 
   create_table "pills", force: :cascade do |t|
     t.string "name"
     t.string "img"
-    t.integer "mg"
+    t.string "mg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,6 +44,6 @@ ActiveRecord::Schema.define(version: 2019_05_03_191614) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "dosages", "pills"
-  add_foreign_key "dosages", "users"
+  add_foreign_key "doses", "pills"
+  add_foreign_key "doses", "users"
 end
