@@ -856,3 +856,90 @@ Processing by PillsController#index as HTML
 Completed 200 OK in 19ms (Views: 9.3ms | ActiveRecord: 5.6ms)
 
 
+Started GET "/users/new" for ::1 at 2019-05-04 20:10:00 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (2.1ms)
+  Rendered users/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 74ms (Views: 59.2ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/users/new" for ::1 at 2019-05-04 20:10:00 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (3.7ms)
+  Rendered users/new.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 24ms (Views: 22.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2019-05-04 20:10:26 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oaNqzmTZt9MUtrOmP83m/IP0azTgKzYK317eIYojyc7mVSC22jTHylXewqqGlPGgIIigbttki4tblSaqdYWRLg==", "user"=>{"username"=>"Susie", "email"=>"s@s.com", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:30
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Susie"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:30
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "s@s.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:30
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "Susie"], ["email", "s@s.com"], ["password_digest", "$2a$10$MyVGwev3y42UHxyv6gNru.9tf1rEXF9k.baQHbaQ86CzJf3NnEGRO"], ["created_at", "2019-05-05 00:10:26.178723"], ["updated_at", "2019-05-05 00:10:26.178723"]]
+  ↳ app/controllers/users_controller.rb:30
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:30
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 67ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/users/2" for ::1 at 2019-05-04 20:10:26 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:67
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 19ms (Views: 16.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2019-05-04 20:10:46 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:16
+  Rendered users/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 86ms (Views: 83.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/new" for ::1 at 2019-05-04 20:10:48 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (5.9ms)
+  Rendered users/new.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 40ms (Views: 38.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2019-05-04 20:10:58 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Si4a5/eRY+bMvwMZG8jhoK8CMabFeb0ibQrOKDmJz/wLGfX1st7h2M8MNTGiTCaaScP4U85ow3gBR+kTULR71w==", "user"=>{"username"=>"Tim", "email"=>"t@t.com", "password"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:30
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Tim"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:30
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "t@t.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:30
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "Tim"], ["email", "t@t.com"], ["password_digest", "$2a$10$Aiv2M/erg/0JV37tvBBOvu50cfUTAEJonz.RvQsc.vBc57kZvBVbO"], ["created_at", "2019-05-05 00:10:58.796654"], ["updated_at", "2019-05-05 00:10:58.796654"]]
+  ↳ app/controllers/users_controller.rb:30
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:30
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 68ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/users/3" for ::1 at 2019-05-04 20:10:58 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:67
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 17ms (Views: 14.9ms | ActiveRecord: 0.2ms)
+
+

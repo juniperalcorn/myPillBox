@@ -8,6 +8,11 @@
 
 #--------------SYNTAX FOR SEEDS
 # Pill.create!(name: '', img: '', mg: '')
+# User.create!(name:'', email:'', password_digest:'')
+
+#-------------USERS
+# User.create!(name:'Susie', email:'s@s.com', password_digest:'$2a$10$MyVGwev3y42UHxyv6gNru.9tf1rEXF9k.baQHbaQ86CzJf3NnEGRO')
+# User.create!(name:'Tim', email:'t@t.com', password_digest:'$2a$10$Aiv2M/erg/0JV37tvBBOvu50cfUTAEJonz.RvQsc.vBc57kZvBVbO')
 
 # ----------- PILLS ---------------
 #Parkinson's meds
