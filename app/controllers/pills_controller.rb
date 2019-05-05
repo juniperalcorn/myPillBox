@@ -11,7 +11,6 @@ class PillsController < ApplicationController
   # GET /pills/1
   def show
     render json: @pill
-    # render json: @pill, include: :???
   end
 
   # POST /pills
