@@ -12,7 +12,7 @@ class DosesController < ApplicationController
 
   # GET /doses/1
   def show
-    render json: @dose, include :pills
+    render json: @dose, include: :pills
   end
 
   # POST /doses
