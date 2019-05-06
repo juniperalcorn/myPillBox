@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import {Route, Link} from 'react-router-dom'
-import {withRouter} from 'react-router'
+import { withRouter } from 'react-router'
 import decode from 'jwt-decode'
 
 //api
@@ -53,7 +53,6 @@ class App extends Component {
       })
       this.setDate()
       this.setTime()
-
     }
   }
 
@@ -83,7 +82,7 @@ class App extends Component {
     } else if (month===10){
       month = 'October'
     } else if (month===11){
-      month = 'Novebmer'
+      month = 'November'
     } else {
       month = 'December'
     }
@@ -231,4 +230,4 @@ async getDoses() {
   }
 }
 
-export default App;
+export default withRouter(App);
