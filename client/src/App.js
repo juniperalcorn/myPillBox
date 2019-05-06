@@ -41,6 +41,7 @@ class App extends Component {
     this.showInstructions=this.showInstructions.bind(this)
     this.setDate=this.setDate.bind(this)
     this.setTime=this.setTime.bind(this)
+    this.returnHome=this.returnHome.bind(this)
     // this.handleFormChange=this.handleFormChange.bind(this)
   }
 
@@ -168,6 +169,9 @@ handleAuthChange(e){
 showInstructions(){
   this.props.history.push('/instructions')
 }
+returnHome(){
+  this.props.history.push('/')
+}
 
 //-------GET USER INFO
 async getDoses() {
@@ -187,6 +191,7 @@ async getDoses() {
               ?
               <>
                 <button onClick={this.handleLogout}>Logout</button>
+                <button onClick={this.props.history.goBack}>Back</button>
                 <button onClick={this.showInstructions}>How To Use This App</button>
                 <p>Welcome {this.state.currentUser.username}</p>
                 <p>{this.state.date}, {this.state.time}</p>
@@ -202,7 +207,7 @@ async getDoses() {
 
 
 
-
+       
 
         <Route exact path='/' render={()=> (
           <Welcome/>
