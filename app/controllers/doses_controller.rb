@@ -19,12 +19,15 @@ class DosesController < ApplicationController
   # POST /doses
   def create
     @dose = Dose.new(dose_params)
+    @user = User.find(params[:user_id])
+    @user.doses<< @dose
 
     if @dose.save
-      render json: @dose, status: :created, location: @dose
+      render json: @user, include: :doses
     else
       render json: @dose.errors, status: :unprocessable_entity
     end
+
   end
 
   # PATCH/PUT /dose/1

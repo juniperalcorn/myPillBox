@@ -36,10 +36,10 @@ class App extends Component {
       pills:[],
       selectedPill:{
         pill_id:null,
-        am_dose:null,
-        mid_dose:null,
-        pm_dose:null,
-        bed_dose:null,
+        am_dose:'',
+        mid_dose:'',
+        pm_dose:'',
+        bed_dose:'',
       },
     }
     //bind functions here
@@ -207,7 +207,7 @@ async newDose(e){
   this.setState(prevState=>({
     doses: [...prevState.doses, newDose],
     selectedPill:{
-      pill_id: '',
+      pill_id: null,
       am_dose:'',
       mid_dose:'',
       pm_dose:'',
@@ -224,7 +224,7 @@ async showPills(){
 pillForm(e){
   this.setState({
     selectedPill: {
-      pill_id: e.target.value
+      pill_id: parseInt(e.target.value)
     }
   })
 }

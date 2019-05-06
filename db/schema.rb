@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_04_230821) do
+ActiveRecord::Schema.define(version: 2019_05_06_201307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 2019_05_04_230821) do
   create_table "doses", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "pill_id"
-    t.integer "am_dose"
-    t.integer "mid_dose"
-    t.integer "pm_dose"
-    t.integer "bed_dose"
+    t.string "am_dose"
+    t.string "mid_dose"
+    t.string "pm_dose"
+    t.string "bed_dose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pill_id"], name: "index_doses_on_pill_id"

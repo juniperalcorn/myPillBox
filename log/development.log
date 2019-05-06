@@ -5624,3 +5624,122 @@ Processing by DosesController#create as */*
 Completed 422 Unprocessable Entity in 7ms (Views: 0.2ms | ActiveRecord: 1.6ms)
 
 
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2806663968988704930)[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to ChangeDoseColumnDataTypes (20190506201307)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (57.1ms)[0m  [1m[35mALTER TABLE "doses" ALTER COLUMN "am_dose" TYPE character varying[0m
+  ↳ db/migrate/20190506201307_change_dose_column_data_types.rb:3
+  [1m[35m (9.9ms)[0m  [1m[35mALTER TABLE "doses" ALTER COLUMN "mid_dose" TYPE character varying[0m
+  ↳ db/migrate/20190506201307_change_dose_column_data_types.rb:4
+  [1m[35m (5.7ms)[0m  [1m[35mALTER TABLE "doses" ALTER COLUMN "pm_dose" TYPE character varying[0m
+  ↳ db/migrate/20190506201307_change_dose_column_data_types.rb:5
+  [1m[35m (5.3ms)[0m  [1m[35mALTER TABLE "doses" ALTER COLUMN "bed_dose" TYPE character varying[0m
+  ↳ db/migrate/20190506201307_change_dose_column_data_types.rb:6
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190506201307"]]
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2806663968988704930)[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jalcorn/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Started GET "/pills" for ::1 at 2019-05-06 16:14:49 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jalcorn/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by PillsController#index as */*
+  [1m[36mPill Load (0.8ms)[0m  [1m[34mSELECT "pills".* FROM "pills"[0m
+  ↳ app/controllers/pills_controller.rb:8
+Completed 200 OK in 33ms (Views: 16.6ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/pills" for ::1 at 2019-05-06 16:15:08 -0400
+Processing by PillsController#index as */*
+  [1m[36mPill Load (0.3ms)[0m  [1m[34mSELECT "pills".* FROM "pills"[0m
+  ↳ app/controllers/pills_controller.rb:8
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/pills" for ::1 at 2019-05-06 16:15:43 -0400
+Processing by PillsController#index as */*
+  [1m[36mPill Load (0.3ms)[0m  [1m[34mSELECT "pills".* FROM "pills"[0m
+  ↳ app/controllers/pills_controller.rb:8
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/7/doses" for ::1 at 2019-05-06 16:15:55 -0400
+Processing by DosesController#create as */*
+  Parameters: {"dose"=>{"pill_id"=>"3", "am_dose"=>"1", "mid_dose"=>"1", "pm_dose"=>"1", "bed_dose"=>"1"}, "user_id"=>"7"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/doses_controller.rb:23
+  [1m[36mPill Load (0.2ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:23
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/doses_controller.rb:23
+Completed 422 Unprocessable Entity in 82ms (Views: 0.2ms | ActiveRecord: 40.4ms)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPill Load (0.3ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDose Create (45.6ms)[0m  [1m[32mINSERT INTO "doses" ("user_id", "pill_id", "am_dose", "mid_dose", "pm_dose", "bed_dose", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 1], ["pill_id", 1], ["am_dose", "1"], ["mid_dose", "0"], ["pm_dose", "1"], ["bed_dose", "2"], ["created_at", "2019-05-06 20:17:00.715882"], ["updated_at", "2019-05-06 20:17:00.715882"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/pills" for ::1 at 2019-05-06 16:18:24 -0400
+Processing by PillsController#index as */*
+  [1m[36mPill Load (0.4ms)[0m  [1m[34mSELECT "pills".* FROM "pills"[0m
+  ↳ app/controllers/pills_controller.rb:8
+Completed 200 OK in 13ms (Views: 10.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/7/doses" for ::1 at 2019-05-06 16:18:48 -0400
+Processing by DosesController#create as */*
+  Parameters: {"dose"=>{"pill_id"=>4, "am_dose"=>"1", "mid_dose"=>"1", "pm_dose"=>"1", "bed_dose"=>"1"}, "user_id"=>"7"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/doses_controller.rb:23
+  [1m[36mPill Load (0.3ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:23
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/doses_controller.rb:23
+Completed 422 Unprocessable Entity in 5ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/pills" for ::1 at 2019-05-06 16:34:17 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jalcorn/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by PillsController#index as */*
+  [1m[36mPill Load (0.7ms)[0m  [1m[34mSELECT "pills".* FROM "pills"[0m
+  ↳ app/controllers/pills_controller.rb:8
+Completed 200 OK in 73ms (Views: 11.6ms | ActiveRecord: 8.3ms)
+
+
+Started POST "/users/7/doses" for ::1 at 2019-05-06 16:34:52 -0400
+Processing by DosesController#create as */*
+  Parameters: {"dose"=>{"pill_id"=>3, "am_dose"=>"1", "mid_dose"=>"1", "pm_dose"=>"1", "bed_dose"=>"1"}, "user_id"=>"7"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:22
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/doses_controller.rb:23
+  [1m[36mPill Load (0.2ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:23
+  [1m[36mDose Create (0.9ms)[0m  [1m[32mINSERT INTO "doses" ("user_id", "pill_id", "am_dose", "mid_dose", "pm_dose", "bed_dose", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_id", 7], ["pill_id", 3], ["am_dose", "1"], ["mid_dose", "1"], ["pm_dose", "1"], ["bed_dose", "1"], ["created_at", "2019-05-06 20:34:52.252046"], ["updated_at", "2019-05-06 20:34:52.252046"]]
+  ↳ app/controllers/doses_controller.rb:23
+  [1m[35m (53.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/doses_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/doses_controller.rb:25
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/doses_controller.rb:25
+  [1m[36mDose Load (0.4ms)[0m  [1m[34mSELECT "doses".* FROM "doses" WHERE "doses"."user_id" = $1[0m  [["user_id", 7]]
+  ↳ app/controllers/doses_controller.rb:26
+Completed 200 OK in 98ms (Views: 3.1ms | ActiveRecord: 61.0ms)
+
+
