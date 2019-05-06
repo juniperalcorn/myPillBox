@@ -9,6 +9,7 @@ import decode from 'jwt-decode'
 import { loginUser, registerUser } from './services/api-helper'
 
 //components
+import Welcome from './components/Welcome'
 import Register from './components/Register'
 import Login from './components/Login'
 
@@ -93,8 +94,9 @@ handleAuthChange(e){
   render(){
     return (
       <div className="App">
-          APPPPPPP
-
+        <Route exact path='/' render={()=> (
+          <Welcome/>
+        )}/> 
         <Route exact path='/register' render={() => (
           <Register 
           handleRegister={this.handleRegister}
