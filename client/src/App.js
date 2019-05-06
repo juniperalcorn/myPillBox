@@ -25,7 +25,10 @@ class App extends Component {
       formData: {
         name:'',
       },
-
+      currentUser:{
+        username:'',
+        user_id: null,
+      }
     }
     //bind functions here
     this.handleAuthChange=this.handleAuthChange.bind(this)
