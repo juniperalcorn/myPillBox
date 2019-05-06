@@ -1,18 +1,20 @@
 //packages
 import React, {Component} from 'react';
 import './App.css';
-import {Route, Link} from 'react-router-dom'
+import {Route, Link, Switch} from 'react-router-dom'
 import { withRouter } from 'react-router'
 import decode from 'jwt-decode'
 
 //api
-import { loginUser, registerUser, getDose } from './services/api-helper'
+import { loginUser, registerUser, getPills, getDose, createDose } from './services/api-helper'
 
 //components
 import Welcome from './components/Welcome'
 import Register from './components/Register'
 import Login from './components/Login'
 import Instructions from './components/Instructions'
+import Pillbox from './components/Pillbox'
+import AddPill from './components/AddPill'
 
 class App extends Component {
   constructor(props){
@@ -31,6 +33,14 @@ class App extends Component {
       doses:[],
       date: '',
       time: '',
+      pills:[],
+      selectedPill:{
+        pill_id:null,
+        am_dose:null,
+        mid_dose:null,
+        pm_dose:null,
+        bed_dose:null,
+      },
     }
     //bind functions here
     this.handleAuthChange=this.handleAuthChange.bind(this)
@@ -42,10 +52,16 @@ class App extends Component {
     this.setDate=this.setDate.bind(this)
     this.setTime=this.setTime.bind(this)
     this.returnHome=this.returnHome.bind(this)
+    this.goToNewPill=this.goToNewPill.bind(this)
+    this.showPills=this.showPills.bind(this)
+    this.pillForm=this.pillForm.bind(this)
+    this.handlePillChange=this.handlePillChange.bind(this)
+    this.newDose=this.newDose.bind(this)
     // this.handleFormChange=this.handleFormChange.bind(this)
   }
 
   componentDidMount(){
+    this.showPills()
     const token = localStorage.getItem('jwt')
     if (token) {
       const userData = decode(token)
@@ -172,6 +188,9 @@ showInstructions(){
 returnHome(){
   this.props.history.push('/')
 }
+goToNewPill(){
+  this.props.history.push('/create-new')
+}
 
 //-------GET USER INFO
 async getDoses() {
@@ -181,6 +200,43 @@ async getDoses() {
   })
 }
 
+//------API
+async newDose(e){
+  e.preventDefault()
+  const newDose = await createDose(this.state.selectedPill, this.state.currentUser.user_id)
+  this.setState(prevState=>({
+    doses: [...prevState.doses, newDose],
+    selectedPill:{
+      pill_id: '',
+      am_dose:'',
+      mid_dose:'',
+      pm_dose:'',
+      bed_dose:'',
+    }
+  }))
+}
+
+async showPills(){
+  const pills = await getPills()
+  this.setState({ pills })
+}
+
+pillForm(e){
+  this.setState({
+    selectedPill: {
+      pill_id: e.target.value
+    }
+  })
+}
+handlePillChange(e){
+  const {name, value}=e.target
+  this.setState(prevState=>({
+    selectedPill: {
+      ...prevState.selectedPill,
+      [name]:value
+    }
+  }))
+}
 
   render(){
     return (
@@ -203,33 +259,55 @@ async getDoses() {
         </header>
 
 
-
+        {this.state.currentUser
+        ?
+        <>
+          <Pillbox createNew={this.goToNewPill}/>
+        </>
+        :
+        <>
+          <Welcome/>
+        </>
+        }
 
 
 
        
 
-        <Route exact path='/' render={()=> (
+        {/* <Route exact path='/' render={()=> (
           <Welcome/>
-        )}/> 
-        <Route exact path='/instructions' render={()=> (
-          <Instructions/>
-        )}/> 
-        <Route exact path='/register' render={() => (
-          <Register 
-          handleRegister={this.handleRegister}
-          handleChange={this.handleAuthChange}
-          formData={this.state.authFormData}
-          />
-        )} />
+        )}/>  */}
+        <Switch>
+          <Route exact path='/instructions' render={()=> (
+            <Instructions/>
+          )}/> 
 
-        <Route exact path='/login' render={() => (
-          <Login 
-          handleLogin={this.handleLogin}
-          handleChange={this.handleAuthChange}
-          formData={this.state.authFormData}
-          />
-        )}/>
+          <Route exact path='/create-new' render={()=>(
+            <AddPill 
+              pills={this.state.pills}
+              toggleItem={this.toggleSelected}
+              selectedPill={this.state.selectedPill}
+              handleSelect={this.pillForm}
+              handleChange={this.handlePillChange}
+              newDose={this.newDose}
+            />
+          )}/>
+          <Route exact path='/register' render={() => (
+            <Register 
+            handleRegister={this.handleRegister}
+            handleChange={this.handleAuthChange}
+            formData={this.state.authFormData}
+            />
+          )} />
+
+          <Route exact path='/login' render={() => (
+            <Login 
+            handleLogin={this.handleLogin}
+            handleChange={this.handleAuthChange}
+            formData={this.state.authFormData}
+            />
+          )}/>
+        </Switch>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 class DosesController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   before_action :set_dose, only: [:show, :update, :destroy]
 #   before_action :authenticate_user, only: [:update]
@@ -52,6 +53,6 @@ class DosesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def dose_params
-      params.require(:dose).permit(:name, :am_dose, :mid_dose, :pm_dose, :bed_dose)
+      params.require(:dose).permit(:pill_id, :am_dose, :mid_dose, :pm_dose, :bed_dose)
     end
 end
