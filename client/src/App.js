@@ -6,12 +6,13 @@ import {withRouter} from 'react-router'
 import decode from 'jwt-decode'
 
 //api
-import { loginUser, registerUser } from './services/api-helper'
+import { loginUser, registerUser, getDose } from './services/api-helper'
 
 //components
 import Welcome from './components/Welcome'
 import Register from './components/Register'
 import Login from './components/Login'
+import Instructions from './components/Instructions'
 
 class App extends Component {
   constructor(props){
@@ -26,9 +27,10 @@ class App extends Component {
         name:'',
       },
       currentUser:{
-        username:'',
-        user_id: null,
-      }
+      },
+      doses:[],
+      date: '',
+      time: '',
     }
     //bind functions here
     this.handleAuthChange=this.handleAuthChange.bind(this)
@@ -36,6 +38,9 @@ class App extends Component {
     this.handleLogin=this.handleLogin.bind(this)
     this.handleLoginButton=this.handleLoginButton.bind(this)
     this.handleLogout=this.handleLogout.bind(this)
+    this.showInstructions=this.showInstructions.bind(this)
+    this.setDate=this.setDate.bind(this)
+    this.setTime=this.setTime.bind(this)
     // this.handleFormChange=this.handleFormChange.bind(this)
   }
 
@@ -46,7 +51,74 @@ class App extends Component {
       this.setState({
         currentUser: userData
       })
+      this.setDate()
+      this.setTime()
+
     }
+  }
+
+  setDate(){
+    let weekDay = new Date().getDay()
+    const day = new Date().getDate()
+    let month = new Date().getMonth() +1
+    
+    if (month===1){
+      month = 'January'
+    } else if (month===2){
+      month = 'February'
+    } else if (month===3){
+      month = 'March'
+    } else if (month===4){
+      month = 'April'
+    } else if (month===5){
+      month = 'May'
+    } else if (month===6){
+      month = 'June'
+    } else if (month===7){
+      month = 'July'
+    } else if (month===8){
+      month = 'August'
+    } else if (month===9){
+      month = 'September'
+    } else if (month===10){
+      month = 'October'
+    } else if (month===11){
+      month = 'Novebmer'
+    } else {
+      month = 'December'
+    }
+
+    if (weekDay === 0 ){
+      weekDay = 'Sunday'
+    } else if (weekDay === 1) {
+      weekDay = 'Monday'
+    } else if (weekDay === 2) {
+      weekDay = 'Tuesday'
+    } else if (weekDay === 3) {
+      weekDay = 'Wednesday'
+    } else if (weekDay ===4) {
+      weekDay = 'Thursday'
+    } else if (weekDay === 5) {
+      weekDay = 'Friday'
+    } else {weekDay = 'Saturday'}
+
+    this.setState({
+      date: weekDay + ' ' + month + ' ' + day
+    })
+  }
+
+  setTime(){
+    let time = new Date().getHours()
+    if (time <= 11){
+      time = 'Morning'
+    } else if (time >11 && time<=16){
+      time = 'Midday'
+    } else if (time >16 && time <=20){
+      time = 'Evening'
+    } else {time = 'Bed'}
+    this.setState({
+      time
+    })
   }
 
 
@@ -93,12 +165,51 @@ handleAuthChange(e){
   }))
 }
 
+//-----HELPERS
+showInstructions(){
+  this.props.history.push('/instructions')
+}
+
+//-------GET USER INFO
+async getDoses() {
+  const doses = await getDose(this.state.currentUser.user_id)
+  this.setState({
+    doses
+  })
+}
+
 
   render(){
     return (
       <div className="App">
+        <header>
+          <div>
+            {this.state.currentUser
+              ?
+              <>
+                <button onClick={this.handleLogout}>Logout</button>
+                <button onClick={this.showInstructions}>How To Use This App</button>
+                <p>Welcome {this.state.currentUser.username}</p>
+                <p>{this.state.date}, {this.state.time}</p>
+              </>
+              :
+              <button onClick={this.handleLoginButton}>Login/register</button>
+            }
+          </div>
+        </header>
+
+
+
+
+
+
+
+
         <Route exact path='/' render={()=> (
           <Welcome/>
+        )}/> 
+        <Route exact path='/instructions' render={()=> (
+          <Instructions/>
         )}/> 
         <Route exact path='/register' render={() => (
           <Register 
