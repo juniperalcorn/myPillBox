@@ -8,12 +8,12 @@ class DosesController < ApplicationController
   def index
     @dose = Dose.all
 
-    render json: @dose
+    render json: @dose, include: :pill
   end
 
   # GET /doses/1
   def show
-    render json: @dose, include: :pills
+    render json: @dose, include: :pill
   end
 
   # POST /doses

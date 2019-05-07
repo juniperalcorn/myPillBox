@@ -15,6 +15,7 @@ import Login from './components/Login'
 import Instructions from './components/Instructions'
 import Pillbox from './components/Pillbox'
 import AddPill from './components/AddPill'
+import Doses from './components/Doses'
 
 class App extends Component {
   constructor(props){
@@ -29,6 +30,16 @@ class App extends Component {
         name:'',
       },
       currentUser:{
+      },
+      pillBox:{
+        am: 'Morning',
+        am_dose: 'am_dose',
+        mid: 'Midday',
+        mid_dose: 'mid_dose',
+        pm: 'Evening',
+        pm_dose: 'pm_dose',
+        bed: 'Bed',
+        bed_dose:'bed_dose'
       },
       doses:[],
       date: '',
@@ -57,19 +68,21 @@ class App extends Component {
     this.pillForm=this.pillForm.bind(this)
     this.handlePillChange=this.handlePillChange.bind(this)
     this.newDose=this.newDose.bind(this)
+    this.getDoses=this.getDoses.bind(this)
     // this.handleFormChange=this.handleFormChange.bind(this)
   }
 
   componentDidMount(){
     this.showPills()
+    this.getDoses()
     const token = localStorage.getItem('jwt')
     if (token) {
+      this.setDate()
+      this.setTime()
       const userData = decode(token)
       this.setState({
         currentUser: userData
       })
-      this.setDate()
-      this.setTime()
     }
   }
 
@@ -136,14 +149,6 @@ class App extends Component {
       time
     })
   }
-
-
-// handleFormChange(e){
-//   const {name, value} = e.target
-//   this.setState(prevState=>({
-    
-//   }))
-// }
 
   //-------LOGIN AND REGISTER
 handleLoginButton(){
@@ -221,6 +226,11 @@ async showPills(){
   this.setState({ pills })
 }
 
+// async findPill(){
+//   const pill = await getPills()
+//   this.setState({})
+// }
+
 pillForm(e){
   this.setState({
     selectedPill: {
@@ -270,16 +280,37 @@ handlePillChange(e){
         </>
         }
 
-
-
-       
-
-        {/* <Route exact path='/' render={()=> (
-          <Welcome/>
-        )}/>  */}
         <Switch>
           <Route exact path='/instructions' render={()=> (
-            <Instructions/>
+            <Instructions />
+          )}/> 
+          <Route exact path='/morning' render={()=> (
+            <Doses 
+            header={this.state.pillBox.am}
+            filter={this.state.pillBox.am_dose}
+            doses={this.state.doses}
+            pills={this.state.pills}/>
+          )}/> 
+          <Route exact path='/midday' render={()=> (
+            <Doses 
+            header={this.state.pillBox.mid}
+            filter={this.state.pillBox.mid_dose}
+            doses={this.state.doses}
+            pills={this.state.pills}/>
+          )}/> 
+          <Route exact path='/evening' render={()=> (
+            <Doses 
+            header={this.state.pillBox.pm}
+            filter={this.state.pillBox.pm_dose}
+            doses={this.state.doses}
+            pills={this.state.pills}/>
+          )}/> 
+          <Route exact path='/bed' render={()=> (
+            <Doses 
+            header={this.state.pillBox.bed}
+            filter={this.state.pillBox.bed_dose}
+            doses={this.state.doses}
+            pills={this.state.pills}/>
           )}/> 
 
           <Route exact path='/create-new' render={()=>(
