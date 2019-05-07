@@ -27,25 +27,25 @@ class Doses extends Component {
       if (this.props.filter==='am_dose'){
           return this.props.doses.map(dose=>(
               <div key={dose.id}>
-                <p>Take {dose.am_dose} of {dose.pill.name}</p>
+                <p><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.am_dose} {dose.pill.name}</p>
               </div>
           ))
       } else if (this.props.filter==='mid_dose'){
         return this.props.doses.map(dose=>(
             <div key={dose.id}>
-                <p>Take {dose.am_dose} of pill {dose.pill_id}</p>
+                <p><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.am_dose} {dose.pill.name}</p>
             </div>
         ))
     } else if (this.props.filter==='pm_dose'){
        return this.props.doses.map(dose=>(
             <div key={dose.id}>
-                <p>Take {dose.am_dose} of pill {dose.pill_id}</p>
+                <p><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.am_dose} {dose.pill.name}</p>
             </div>
         ))
     } else if (this.props.filter==='bed_dose'){
        return this.props.doses.map(dose=>(
             <div key={dose.id}>
-                <p>Take {dose.am_dose} of pill {dose.pill_id}</p>
+                <p><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.am_dose} {dose.pill.name}</p>
             </div>
         ))
     } 

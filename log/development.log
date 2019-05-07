@@ -6804,3 +6804,119 @@ Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.9ms)
 Completed 200 OK in 26ms (Views: 19.8ms | ActiveRecord: 5.9ms)
 
 
+Started GET "/pills" for ::1 at 2019-05-07 11:17:46 -0400
+Started GET "/users/undefined/doses" for ::1 at 2019-05-07 11:17:46 -0400
+Processing by PillsController#index as */*
+Processing by DosesController#index as */*
+  Parameters: {"user_id"=>"undefined"}
+  [1m[36mPill Load (5.1ms)[0m  [1m[34mSELECT "pills".* FROM "pills"[0m
+  ↳ app/controllers/pills_controller.rb:8
+Completed 200 OK in 13ms (Views: 6.9ms | ActiveRecord: 5.1ms)
+
+
+  [1m[36mDose Load (7.5ms)[0m  [1m[34mSELECT "doses".* FROM "doses"[0m
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mPill Load (0.9ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mCACHE Pill Load (0.0ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mCACHE Pill Load (0.0ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mPill Load (0.3ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mPill Load (0.2ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mPill Load (0.2ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mPill Load (0.3ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+Completed 200 OK in 26ms (Views: 14.0ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/pills" for ::1 at 2019-05-07 11:18:08 -0400
+Started GET "/users/undefined/doses" for ::1 at 2019-05-07 11:18:08 -0400
+Processing by PillsController#index as */*
+Processing by DosesController#index as */*
+  Parameters: {"user_id"=>"undefined"}
+  [1m[36mPill Load (1.4ms)[0m  [1m[34mSELECT "pills".* FROM "pills"[0m
+  ↳ app/controllers/pills_controller.rb:8
+Completed 200 OK in 8ms (Views: 5.8ms | ActiveRecord: 1.4ms)
+
+
+  [1m[36mDose Load (5.1ms)[0m  [1m[34mSELECT "doses".* FROM "doses"[0m
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mPill Load (0.3ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mCACHE Pill Load (0.0ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mCACHE Pill Load (0.0ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mPill Load (0.3ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mPill Load (1.1ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mPill Load (0.7ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mPill Load (0.2ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+Completed 200 OK in 22ms (Views: 13.6ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/pills" for ::1 at 2019-05-07 11:18:11 -0400
+Started GET "/users/undefined/doses" for ::1 at 2019-05-07 11:18:11 -0400
+Processing by DosesController#index as */*
+  Parameters: {"user_id"=>"undefined"}
+Processing by PillsController#index as */*
+  [1m[36mPill Load (1.7ms)[0m  [1m[34mSELECT "pills".* FROM "pills"[0m
+  ↳ app/controllers/pills_controller.rb:8
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 1.7ms)
+
+
+  [1m[36mDose Load (10.3ms)[0m  [1m[34mSELECT "doses".* FROM "doses"[0m
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mPill Load (40.4ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mCACHE Pill Load (0.0ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mCACHE Pill Load (0.0ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mPill Load (21.3ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mPill Load (40.5ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mPill Load (0.3ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mPill Load (0.5ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+Completed 200 OK in 129ms (Views: 15.0ms | ActiveRecord: 113.3ms)
+
+
+Started GET "/pills" for ::1 at 2019-05-07 11:18:14 -0400
+Started GET "/users/undefined/doses" for ::1 at 2019-05-07 11:18:14 -0400
+Processing by PillsController#index as */*
+Processing by DosesController#index as */*
+  Parameters: {"user_id"=>"undefined"}
+  [1m[36mDose Load (0.4ms)[0m  [1m[34mSELECT "doses".* FROM "doses"[0m
+  [1m[36mPill Load (3.6ms)[0m  [1m[34mSELECT "pills".* FROM "pills"[0m
+  ↳ app/controllers/doses_controller.rb:11
+  ↳ app/controllers/pills_controller.rb:8
+Completed 200 OK in 10ms (Views: 6.0ms | ActiveRecord: 3.6ms)
+
+
+  [1m[36mPill Load (4.5ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mCACHE Pill Load (0.0ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mCACHE Pill Load (0.0ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mPill Load (0.2ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mPill Load (0.2ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mPill Load (0.4ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+  [1m[36mPill Load (0.2ms)[0m  [1m[34mSELECT  "pills".* FROM "pills" WHERE "pills"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/doses_controller.rb:11
+Completed 200 OK in 21ms (Views: 14.8ms | ActiveRecord: 6.1ms)
+
+
