@@ -82,6 +82,7 @@ class App extends Component {
     this.choosePillToView=this.choosePillToView.bind(this)
     this.updateFormPillSelect=this.updateFormPillSelect.bind(this)
     this.destroyDose=this.destroyDose.bind(this)
+    this.updateDoseForm=this.updateDoseForm.bind(this)
   }
 
   componentDidMount(){
@@ -232,15 +233,26 @@ async newDose(e){
   }))
 }
 
-async updateDose(e){
+async updateDoseForm(e, doseId){
   e.preventDefault()
-  const updateDose = await updateDose(this.state.selectedPill, this.state.currentUser.user_id, this.state.updateInfo.dose_id)
+  const doseUpdate = await updateDose(this.state.selectedPill, this.state.currentUser.user_id, doseId)
+  this.setState(prevState=>({
+    doses: prevState.doses.map(el=> el.id === doseId ? doseUpdate : el),
+    selectedPill:{
+      pill_id: null,
+      am_dose:'',
+      mid_dose:'',
+      pm_dose:'',
+      bed_dose:'',
+    }
+  }))
 }
 
-updateFormPillSelect(){
+updateFormPillSelect(params){
+  const paramsId = parseInt(params)
   this.setState({
     selectedPill:{
-      pill_id: parseInt(this.props.match.params.id)
+      pill_id: paramsId
     }
   })
 }
@@ -257,6 +269,7 @@ pillForm(e){
     }
   })
 }
+
 handlePillChange(e){
   const {name, value}=e.target
   this.setState(prevState=>({
@@ -384,6 +397,10 @@ async destroyDose(doseId){
               getDoses={this.getDoses}
               currentUser={this.state.currentUser.user_id}
               destroyDose={this.destroyDose}
+              updateDose={this.updateDoseForm}
+              handleChange={this.handlePillChange}
+              selectedPill={this.state.selectedPill}
+              pillId={this.updateFormPillSelect}
             />
           )}/>
           
