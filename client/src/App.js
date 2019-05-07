@@ -81,6 +81,7 @@ class App extends Component {
     this.getDoses=this.getDoses.bind(this)
     this.choosePillToView=this.choosePillToView.bind(this)
     this.updateFormPillSelect=this.updateFormPillSelect.bind(this)
+    this.destroyDose=this.destroyDose.bind(this)
   }
 
   componentDidMount(){
@@ -272,6 +273,14 @@ choosePillToView(e){
   })
 }
 
+async destroyDose(doseId){
+  const destroyDose = await deleteDose(this.state.currentUser.user_id, doseId)
+  this.setState(prevState=>({
+    doses: prevState.doses.filter(el => el.id !== doseId)
+  }))
+  this.props.history.push('/')
+}
+
   render(){
     return (
       <div className="App">
@@ -374,6 +383,7 @@ choosePillToView(e){
               doses={this.state.doses}
               getDoses={this.getDoses}
               currentUser={this.state.currentUser.user_id}
+              destroyDose={this.destroyDose}
             />
           )}/>
           

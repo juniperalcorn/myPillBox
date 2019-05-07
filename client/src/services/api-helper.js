@@ -72,5 +72,5 @@ export const deleteDose = (userId, doseId) => {
         }
       }
     return fetch(`${baseUrl}/users/${userId}/doses/${doseId}`, opts)
-      .then(resp=>resp.json())
+    .catch(e=> e.message.json())
 }
