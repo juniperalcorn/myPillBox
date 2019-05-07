@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router'
+import {Link} from 'react-router-dom'
 
 class Doses extends Component {
     constructor(props){
@@ -10,41 +11,29 @@ class Doses extends Component {
         this.showDoses=this.showDoses.bind(this)
     }
 
-    //this.props.pills.find
-
-//   matchPillToDose(){
-//       this.props.doses.map(dose=>{
-//          <div key={dose.id}>
-//             {const findPill = this.props.pills.find(pill=>pill.id === dose.pill_id)}
-
-//          </div>
-//       })
-//   }  
-
- 
-  showDoses(){
+ showDoses(){
       
       if (this.props.filter==='am_dose'){
           return this.props.doses.map(dose=>(
-              <div key={dose.id}>
-                <p><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.am_dose} {dose.pill.name}</p>
-              </div>
+              <Link to={`/viewpill/${dose.pill_id}`} key={dose.id} >
+                <div><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.am_dose} {dose.pill.name}</div>
+              </Link>
           ))
       } else if (this.props.filter==='mid_dose'){
         return this.props.doses.map(dose=>(
-            <div key={dose.id}>
+            <div key={dose.id} value={dose.pill_id}>
                 <p><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.am_dose} {dose.pill.name}</p>
             </div>
         ))
     } else if (this.props.filter==='pm_dose'){
        return this.props.doses.map(dose=>(
-            <div key={dose.id}>
+            <div key={dose.id} value={dose.pill_id}>
                 <p><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.am_dose} {dose.pill.name}</p>
             </div>
         ))
     } else if (this.props.filter==='bed_dose'){
        return this.props.doses.map(dose=>(
-            <div key={dose.id}>
+            <div key={dose.id} value={dose.pill_id}>
                 <p><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.am_dose} {dose.pill.name}</p>
             </div>
         ))

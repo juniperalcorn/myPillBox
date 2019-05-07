@@ -1,22 +1,23 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router'
 
-class AddPill extends Component {
+class UpdateDose extends Component {
   constructor(props){
       super(props)
       this.state={
+ 
       }
+   
   }
+
+componentDidMount(){
+  this.props.getPillId()
+}
 
   render(){
     return (
-        <div className="add-pill">
-                <select value={this.props.selectedPill.id} onChange={this.props.handleSelect}>
-                    {this.props.pills.map((pill)=>(
-                        <option key={pill.id} value={pill.id}>{pill.name}, {pill.mg}mg</option>
-                    ))}
+        <div className="updateDose">
 
-                </select>
             <form onSubmit={this.props.newDose}>
 
                 <p>Morning Dose:</p>
@@ -36,4 +37,4 @@ class AddPill extends Component {
   }
 }
 
-export default withRouter(AddPill);
+export default withRouter(UpdateDose);

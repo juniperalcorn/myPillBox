@@ -48,3 +48,29 @@ export const createDose= (data, userId) => {
     return fetch(`${baseUrl}/users/${userId}/doses`, opts)
       .then(resp => resp.json())
   }
+
+export const updateDose = (data, userId, doseId) => {
+    const opts = {
+        method: 'UPDATE',
+        body: JSON.stringify({ dose: data }),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+        }
+      }
+      return fetch(`${baseUrl}/users/${userId}/doses/${doseId}`, opts)
+      .then(resp => resp.json())
+}
+
+export const deleteDose = (userId, doseId) => {
+    const opts = {
+        method: 'DELETE',
+        body: JSON.stringify(doseId),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+        }
+      }
+    return fetch(`${baseUrl}/users/${userId}/doses/${doseId}`, opts)
+      .then(resp=>resp.json())
+}
