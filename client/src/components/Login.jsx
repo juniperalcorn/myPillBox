@@ -11,10 +11,10 @@ const Login = (props) => {
         <p className='login-p'>Username: <input className='add-pill-input' name="username" type="text" value={props.formData.username} onChange={props.handleChange} /></p>
         <p className='login-p'>Password: <input className='add-pill-input' name="password" type="password" value={props.formData.password} onChange={props.handleChange} /></p>
         <br/>
-        <button className='headerButton'>Login Now</button>
+        <button className='headerButton auth'>Login Now</button>
       </form>
       <p className='login-p'>or</p>
-      <button className='headerButton' onClick={()=>props.switchToRegister()}>Go To Register</button>
+      <button className='headerButton auth' onClick={()=>props.switchToRegister()}>Go To Register</button>
     </div>
   );
 }

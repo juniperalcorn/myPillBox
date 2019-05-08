@@ -17,7 +17,7 @@ const Register = (props) => {
         </form>
       </div>
       <p className='login-p'>or</p>
-      <button className='headerButton' onClick={()=>props.switchToLogin()}>Go To Login</button>
+      <button className='headerButton auth' onClick={()=>props.switchToLogin()}>Go To Login</button>
     </div>
   );
 }

@@ -330,13 +330,16 @@ async destroyDose(doseId){
             {this.state.isLoggedIn
               ?
               <>
+                <div className='top-page'>
                 <div className='headerButton-contain'>
                   <button className='headerButton' onClick={this.handleLogout}>Logout</button>
                   <button className='headerButton' onClick={()=>(this.props.history.push('/'))}>Pill Box</button>
                   <button className='headerButton' onClick={this.showInstructions}>How To Use This App</button>
                 </div>
+                <div className='title'>myPillBox</div>
+                </div>
                 <div className='headerP-contain'>
-                  <div className='headerP'>Welcome, {this.state.currentUser.username}!</div>
+                  <div className='headerP'>Welcome, {this.state.currentUser.username} !</div>
                   <div className='headerP'>{this.state.date}, {this.state.time}</div>
                 </div>
               </>
