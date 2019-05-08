@@ -1,7 +1,7 @@
 class DosesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-  before_action :set_dose, only: [:show, :update, :destroy]
+  before_action :set_dose, only: [:show, :destroy]
 #   before_action :authenticate_user, only: [:update]
 
   # GET /doses
@@ -21,25 +21,30 @@ class DosesController < ApplicationController
 
   # POST /doses
   def create
-    @dose = Dose.new(dose_params)
-    @user = User.find(params[:user_id])
-    @user.doses<< @dose
-
-    if @dose.save
-      render json: @user, include: :doses
-    else
-      render json: @dose.errors, status: :unprocessable_entity
+    if params[:user_id]
+      @dose = Dose.new(dose_params)
+      @user = User.find(params[:user_id])
+      @user.doses << @dose
+    else 
+      @dose = Dose.new(dose_params)
+      if @dose.save
+        render json: @user, include: :doses
+      else
+        render json: @dose.errors, status: :unprocessable_entity
+      end
     end
-
   end
 
   # PATCH/PUT /dose/1
   def update
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @user.doses<< @dose
+      @dose = Dose.find(params[:id])
+      @dose.update(dose_params)
       render json: @user, include: :doses
-    elsif @dose.update(dose_params)
+    elsif params[:id]
+      @dose = Dose.find(params[:id])
+      @dose.update(dose_params)
       render json: @dose
     else
       render json: @dose.errors, status: :unprocessable_entity
@@ -59,6 +64,7 @@ class DosesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def dose_params
+      puts "I'm HERE"
       params.require(:dose).permit(:pill_id, :am_dose, :mid_dose, :pm_dose, :bed_dose)
     end
 end
