@@ -21,7 +21,6 @@ class ViewPill extends Component {
         this.setState({currentUser:this.props.currentUser})
         this.getDoses()
         this.props.pillId(this.props.match.params.id)
-        console.log('component did mount single pill', this.state.singlePill)
     }
 
   async getDoses() {
@@ -32,14 +31,12 @@ class ViewPill extends Component {
         doses: doses,
         singlePill: singlePill
     })
-    console.log('pill state in get doses', this.state.singlePill)
     }
 
 
   render(){
     const params = parseInt(this.props.match.params.id)
     const singlePill = this.state.doses.find((dose) => dose.pill_id===params)
-    console.log('in render, single pill', singlePill)
         return (
             <div className="doses">
                     <h2 className='viewPill-h2'>Pill Detail</h2>

@@ -9,7 +9,6 @@ import decode from 'jwt-decode'
 import { loginUser, registerUser, getPills, getDose, createDose, updateDose, deleteDose, getUserInfo } from './services/api-helper'
 
 //components
-import Welcome from './components/Welcome'
 import Register from './components/Register'
 import Login from './components/Login'
 import Instructions from './components/Instructions'
@@ -191,6 +190,7 @@ handleLogout(){
   this.setState({
     currentUser:null
   })
+  this.props.history.push('/')
 }
 
 handleAuthChange(e){
@@ -257,8 +257,7 @@ async updateDoseForm(userId, doseId){
       bed_dose:'',
     }
   }))
-  console.log('update dose complete')
-  // window.location.reload()
+  window.location.reload()
 }
 
 updateFormPillSelect(params){
@@ -326,7 +325,11 @@ async destroyDose(doseId){
                 </div>
               </>
               :
-              <button className='headerButton' onClick={this.handleLoginButton}>Login/register</button>
+              <div className='welcome-Contain'>
+                <h2 className='welcome-h2'>Welcome To Your Pill Organizer!</h2>
+                <p className='welcome-p'>Login or Register to keep track of your daily medications.</p>
+                <button className='headerButton' onClick={this.handleLoginButton}>Login/register</button>
+              </div>
             }
           </div>
         </header>
@@ -339,9 +342,18 @@ async destroyDose(doseId){
             <Pillbox createNew={this.goToNewPill}/>
           </>
           :
-          <>
-            <Welcome/>
-          </>          
+          <div className='login-contain'>
+            <Login
+              handleLogin={this.handleLogin}
+              handleChange={this.handleAuthChange}
+              formData={this.state.authFormData}
+            />
+            <Register 
+            handleRegister={this.handleRegister}
+            handleChange={this.handleAuthChange}
+            formData={this.state.authFormData}
+            />
+          </div>          
           )}/> 
           <Route exact path='/instructions' render={()=> (
             <Instructions />

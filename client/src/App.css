@@ -40,6 +40,31 @@
   border-top: 2px solid white;
   border-bottom: 2px solid white;
 }
+.welcome-contain{
+  height: 100%;
+  padding-top: 15%;
+  margin-top: 0;
+}
+.welcome-h2{
+  margin: 0;
+  color: black;
+  padding-top: 10%;
+}
+.welcome-p{
+  color: black;
+}
+
+/* LOGIN AND REGISTER */
+.login-contain{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.auth-container{
+  width: 30%;
+  border: 2px solid white;
+  border-radius: 15px;
+}
 
 /* PILLBOX */
 .pillbox-contain{
