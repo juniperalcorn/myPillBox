@@ -328,7 +328,6 @@ async destroyDose(doseId){
               <div className='welcome-Contain'>
                 <h2 className='welcome-h2'>Welcome To Your Pill Organizer!</h2>
                 <p className='welcome-p'>Login or Register to keep track of your daily medications.</p>
-                <button className='headerButton' onClick={this.handleLoginButton}>Login/register</button>
               </div>
             }
           </div>

@@ -10,7 +10,7 @@ const Register = (props) => {
         <p>Email: <input name="email" type="text" value={props.formData.email} onChange={props.handleChange} /></p> 
         <p>Password: <input name="password" type="password" value={props.formData.password} onChange={props.handleChange} /></p>
         <br/>
-        <button>Register</button>
+        <button className='headerButton'>Register</button>
       </form>
     </div>
   );

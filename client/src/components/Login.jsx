@@ -11,7 +11,7 @@ const Login = (props) => {
         <p>Username: <input name="username" type="text" value={props.formData.username} onChange={props.handleChange} /></p>
         <p>Password: <input name="password" type="password" value={props.formData.password} onChange={props.handleChange} /></p>
         <br/>
-        <button>Login</button>
+        <button className='headerButton'>Login</button>
       </form>
     </div>
   );
