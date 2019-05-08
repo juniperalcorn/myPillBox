@@ -25,13 +25,15 @@ class DosesController < ApplicationController
       @dose = Dose.new(dose_params)
       @user = User.find(params[:user_id])
       @user.doses << @dose
-    else 
+    elsif params[:id]
       @dose = Dose.new(dose_params)
       if @dose.save
         render json: @user, include: :doses
       else
         render json: @dose.errors, status: :unprocessable_entity
       end
+    else
+      render json: @dose.errors, status: :unprocessable_entity
     end
   end
 
@@ -64,7 +66,6 @@ class DosesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def dose_params
-      puts "I'm HERE"
       params.require(:dose).permit(:pill_id, :am_dose, :mid_dose, :pm_dose, :bed_dose)
     end
 end

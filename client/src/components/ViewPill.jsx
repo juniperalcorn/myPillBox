@@ -54,16 +54,16 @@ class ViewPill extends Component {
                     this.setState({isEdit: false})
                     }}>
                         <p>Morning Dose:</p>
-                        <input name='am_dose' type='text' placeholder={singlePill && singlePill.am_dose} value={this.props.selectedPill.AM} onChange={this.props.handleChange}></input>
+                        <input name='am_dose' type='text' placeholder={singlePill && singlePill.am_dose} value={this.props.dose.am_dose} onChange={this.props.handleChange}></input>
                         <p>Midday Dose:</p>
-                        <input name='mid_dose' type='text' placeholder={singlePill && singlePill.mid_dose} value={this.props.selectedPill.Mid} onChange={this.props.handleChange}></input>
+                        <input name='mid_dose' type='text' placeholder={singlePill && singlePill.mid_dose} value={this.props.dose.mid_dose} onChange={this.props.handleChange}></input>
                         <p>PM Dose:</p>
-                        <input name='pm_dose' type='text' placeholder={singlePill && singlePill.pm_dose} value={this.props.selectedPill.PM} onChange={this.props.handleChange}></input>
+                        <input name='pm_dose' type='text' placeholder={singlePill && singlePill.pm_dose} value={this.props.dose.pm_dose} onChange={this.props.handleChange}></input>
                         <p>Bed Dose:</p>
-                        <input name='bed_dose' type='text' placeholder={singlePill && singlePill.bed_dose} value={this.props.selectedPill.Bed} onChange={this.props.handleChange}></input>
+                        <input name='bed_dose' type='text' placeholder={singlePill && singlePill.bed_dose} value={this.props.dose.bed_dose} onChange={this.props.handleChange}></input>
                         <br/>
-                    </form>
                     <button>Submit Changes</button>
+                    </form>
                     <button onClick={()=>{this.props.destroyDose(singlePill.id)}}>Delete</button>
                     </>
                     :
