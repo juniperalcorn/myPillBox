@@ -33,6 +33,7 @@ class App extends Component {
       currentUser:{
       },
       isLoggedIn: false,
+      isRegister:false,
       pillBox:{
         am: 'Morning',
         am_dose: 'am_dose',
@@ -83,7 +84,8 @@ class App extends Component {
     this.updateFormPillSelect=this.updateFormPillSelect.bind(this)
     this.destroyDose=this.destroyDose.bind(this)
     this.updateDoseForm=this.updateDoseForm.bind(this)
-
+    this.switchLoginToRegister=this.switchLoginToRegister.bind(this)
+    this.switchRegisterToLogin=this.switchRegisterToLogin.bind(this)
 
     this.getUser=this.getUser.bind(this)
   }
@@ -96,7 +98,8 @@ class App extends Component {
       await this.setTime()
       const userData = await decode(token)
       this.setState({
-        currentUser: userData
+        currentUser: userData,
+        isLoggedIn:true
       })
       this.getDoses()
       this.getUser()
@@ -172,6 +175,13 @@ handleLoginButton(){
   this.props.history.push('/login')
 }
 
+switchLoginToRegister(){
+  this.setState({isRegister: true})
+}
+switchRegisterToLogin(){
+  this.setState({isRegister: false})
+}
+
 async handleLogin(){
   const userData = await loginUser(this.state.authFormData)
   this.setState({
@@ -185,6 +195,7 @@ async handleLogin(){
 async handleRegister(e) {
   e.preventDefault()
   await registerUser(this.state.authFormData)
+  this.setState({isRegister:false})
   this.handleLogin()
 }
 
@@ -195,6 +206,7 @@ handleLogout(){
     isLoggedIn: false,
   })
   this.props.history.push('/')
+  window.location.reload()
 }
 
 handleAuthChange(e){
@@ -339,16 +351,23 @@ async destroyDose(doseId){
 
         <Switch>
         <Route exact path='/' render={()=> (
+          this.state.isRegister 
+          ?
+          <div className='login-contain'>
+          <Register 
+          handleRegister={this.handleRegister}
+          handleChange={this.handleAuthChange}
+          formData={this.state.authFormData}
+          switchToLogin={this.switchRegisterToLogin}
+          />
+          </div>
+          :
           <div className='login-contain'>
             <Login
               handleLogin={this.handleLogin}
               handleChange={this.handleAuthChange}
               formData={this.state.authFormData}
-            />
-            <Register 
-            handleRegister={this.handleRegister}
-            handleChange={this.handleAuthChange}
-            formData={this.state.authFormData}
+              switchToRegister={this.switchLoginToRegister}
             />
           </div>  
         )}/> 
