@@ -5,13 +5,17 @@ const Register = (props) => {
   return (
     <div className="auth-container">
       <h2 className='viewPill-h2'>Register</h2>
-      <form onSubmit={props.handleRegister} >
-        <p className='login-p'>Username: <input className='add-pill-input' name="username" type="text" value={props.formData.username} onChange={props.handleChange} /></p>
-        <p className='login-p'>Email: <input className='add-pill-input' name="email" type="text" value={props.formData.email} onChange={props.handleChange} /></p> 
-        <p className='login-p'>Password: <input className='add-pill-input' name="password" type="password" value={props.formData.password} onChange={props.handleChange} /></p>
-        <br/>
-        <button className='headerButton'>Register Now</button>
-      </form>
+      <div className='registerForm'>
+        <form onSubmit={props.handleRegister} >
+          <div className='register-div'><span className='login-p'>Username:</span> <span className='login-field'><input className='add-pill-input' name="username" type="text" value={props.formData.username} onChange={props.handleChange} /></span></div>
+          <br/>
+          <div className='register-div'><span className='login-p'>Email:</span> <span className='login-field'><input className='add-pill-input' name="email" type="text" value={props.formData.email} onChange={props.handleChange} /></span></div> 
+          <br/>
+          <div className='register-div'> <span className='login-p'>Password:</span> <span className='login-field'><input className='add-pill-input' name="password" type="password" value={props.formData.password} onChange={props.handleChange} /></span></div>
+          <br/>
+          <button className='headerButton'>Register Now</button>
+        </form>
+      </div>
       <p className='login-p'>or</p>
       <button className='headerButton' onClick={()=>props.switchToLogin()}>Go To Login</button>
     </div>

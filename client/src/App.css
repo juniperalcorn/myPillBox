@@ -2,7 +2,7 @@
 .App {
   text-align: center;
   font-family: 'Quicksand', sans-serif;
-  background-color: #FFCAA4;
+  background-color: #001437;
   height: 100%;
 }
 
@@ -24,12 +24,13 @@
   min-width: 100px;
   margin: 1em;
   border-radius: 15px;
-  background-color: #005D59;
-  color: white;
+  background-color: #7898FB;
+  color: #001437;
   font-size: 1em;
   font-weight: 500;
   padding-right: 1em;
   padding-left: 1em;
+  border: 2px solid #001437;
 }
 .headerP{
   color: black;
@@ -49,12 +50,12 @@
 }
 .welcome-h2{
   margin: 0;
-  color: black;
+  color: #B8FB3C;
   padding-top: 10%;
   font-size: 2.5em;
 }
 .welcome-p{
-  color: black;
+  color: #B8FB3C;
   font-size: 1.5em;
 }
 
@@ -64,17 +65,27 @@
   flex-direction: row;
   justify-content: space-around;
   padding-bottom: 10%;
-
+  color: #001437;
 }
 .auth-container{
   width: 50%;
-  border: 2px solid white;
+  border: 2px solid #5CE5D5;
   border-radius: 15px;
   font-size: 1.25em;
   font-weight: 600;
-  background-color: #BEFBFF;
+  background-color: #468539;
 }
-
+.registerForm{
+  align-content: right;
+}
+.register-div{
+  width: 75%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0 auto;
+}
 .login-p{
   font-size: 1.25em;
   font-weight: 600;
@@ -151,6 +162,9 @@ select{
   width: 9em;
   text-align: center;
   border-radius: 15px;
+  background-color: #E8F3F1;
+  margin-left: 1%;
+  margin-right: 1%;
 }
 #submitNew{
   height: 50px;
