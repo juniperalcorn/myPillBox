@@ -21,7 +21,6 @@ class ViewPill extends Component {
         this.setState({currentUser:this.props.currentUser})
         this.getDoses()
         this.props.pillId(this.props.match.params.id)
-        console.log('component did mount single pill', this.state.singlePill)
     }
 
   async getDoses() {
@@ -32,14 +31,12 @@ class ViewPill extends Component {
         doses: doses,
         singlePill: singlePill
     })
-    console.log('pill state in get doses', this.state.singlePill)
     }
 
 
   render(){
     const params = parseInt(this.props.match.params.id)
     const singlePill = this.state.doses.find((dose) => dose.pill_id===params)
-    console.log('in render, single pill', singlePill)
         return (
             <div className="doses">
                     <h2 className='viewPill-h2'>Pill Detail</h2>
@@ -54,16 +51,16 @@ class ViewPill extends Component {
                     this.setState({isEdit: false})
                     }}>
                         <p>Morning Dose:</p>
-                        <input name='am_dose' type='text' placeholder={singlePill && singlePill.am_dose} value={this.props.selectedPill.AM} onChange={this.props.handleChange}></input>
+                        <input name='am_dose' type='text' placeholder={singlePill && singlePill.am_dose} value={this.props.dose.am_dose} onChange={this.props.handleChange}></input>
                         <p>Midday Dose:</p>
-                        <input name='mid_dose' type='text' placeholder={singlePill && singlePill.mid_dose} value={this.props.selectedPill.Mid} onChange={this.props.handleChange}></input>
+                        <input name='mid_dose' type='text' placeholder={singlePill && singlePill.mid_dose} value={this.props.dose.mid_dose} onChange={this.props.handleChange}></input>
                         <p>PM Dose:</p>
-                        <input name='pm_dose' type='text' placeholder={singlePill && singlePill.pm_dose} value={this.props.selectedPill.PM} onChange={this.props.handleChange}></input>
+                        <input name='pm_dose' type='text' placeholder={singlePill && singlePill.pm_dose} value={this.props.dose.pm_dose} onChange={this.props.handleChange}></input>
                         <p>Bed Dose:</p>
-                        <input name='bed_dose' type='text' placeholder={singlePill && singlePill.bed_dose} value={this.props.selectedPill.Bed} onChange={this.props.handleChange}></input>
+                        <input name='bed_dose' type='text' placeholder={singlePill && singlePill.bed_dose} value={this.props.dose.bed_dose} onChange={this.props.handleChange}></input>
                         <br/>
-                    </form>
                     <button>Submit Changes</button>
+                    </form>
                     <button onClick={()=>{this.props.destroyDose(singlePill.id)}}>Delete</button>
                     </>
                     :

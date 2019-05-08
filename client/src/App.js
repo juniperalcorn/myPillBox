@@ -9,7 +9,6 @@ import decode from 'jwt-decode'
 import { loginUser, registerUser, getPills, getDose, createDose, updateDose, deleteDose, getUserInfo } from './services/api-helper'
 
 //components
-import Welcome from './components/Welcome'
 import Register from './components/Register'
 import Login from './components/Login'
 import Instructions from './components/Instructions'
@@ -47,7 +46,7 @@ class App extends Component {
       date: '',
       time: '',
       pills:[],
-      selectedPill:{
+      dose:{
         pill_id:null,
         am_dose:'',
         mid_dose:'',
@@ -191,6 +190,7 @@ handleLogout(){
   this.setState({
     currentUser:null
   })
+  this.props.history.push('/')
 }
 
 handleAuthChange(e){
@@ -232,10 +232,10 @@ async getUser(){
 
 async newDose(e){
   e.preventDefault()
-  const newDose = await createDose(this.state.selectedPill, this.state.currentUser.user_id)
+  const newDose = await createDose(this.state.dose, this.state.currentUser.user_id)
   this.setState(prevState=>({
     doses: [...prevState.doses, newDose],
-    selectedPill:{
+    dose:{
       pill_id: null,
       am_dose:'',
       mid_dose:'',
@@ -246,10 +246,10 @@ async newDose(e){
 }
 
 async updateDoseForm(userId, doseId){
-  const doseUpdate = await updateDose(this.state.selectedPill, userId, doseId)
+  const doseUpdate = await updateDose(this.state.dose, userId, doseId)
   this.setState(prevState=>({
     doses: prevState.doses.map(el=> el.id === doseId ? doseUpdate : el),
-    selectedPill:{
+    dose:{
       pill_id: null,
       am_dose:'',
       mid_dose:'',
@@ -257,14 +257,13 @@ async updateDoseForm(userId, doseId){
       bed_dose:'',
     }
   }))
-  console.log('update dose complete')
-  // window.location.reload()
+  window.location.reload()
 }
 
 updateFormPillSelect(params){
   const paramsId = parseInt(params)
   this.setState({
-    selectedPill:{
+    dose:{
       pill_id: paramsId
     }
   })
@@ -277,7 +276,7 @@ async showPills(){
 
 pillForm(e){
   this.setState({
-    selectedPill: {
+    dose: {
       pill_id: parseInt(e.target.value)
     }
   })
@@ -286,8 +285,8 @@ pillForm(e){
 handlePillChange(e){
   const {name, value}=e.target
   this.setState(prevState=>({
-    selectedPill: {
-      ...prevState.selectedPill,
+    dose: {
+      ...prevState.dose,
       [name]:value
     }
   }))
@@ -326,7 +325,10 @@ async destroyDose(doseId){
                 </div>
               </>
               :
-              <button className='headerButton' onClick={this.handleLoginButton}>Login/register</button>
+              <div className='welcome-Contain'>
+                <h2 className='welcome-h2'>Welcome To Your Pill Organizer!</h2>
+                <p className='welcome-p'>Login or Register to keep track of your daily medications.</p>
+              </div>
             }
           </div>
         </header>
@@ -339,9 +341,18 @@ async destroyDose(doseId){
             <Pillbox createNew={this.goToNewPill}/>
           </>
           :
-          <>
-            <Welcome/>
-          </>          
+          <div className='login-contain'>
+            <Login
+              handleLogin={this.handleLogin}
+              handleChange={this.handleAuthChange}
+              formData={this.state.authFormData}
+            />
+            <Register 
+            handleRegister={this.handleRegister}
+            handleChange={this.handleAuthChange}
+            formData={this.state.authFormData}
+            />
+          </div>          
           )}/> 
           <Route exact path='/instructions' render={()=> (
             <Instructions />
@@ -383,7 +394,7 @@ async destroyDose(doseId){
             <AddPill 
               pills={this.state.pills}
               toggleItem={this.toggleSelected}
-              selectedPill={this.state.selectedPill}
+              selectedPill={this.state.dose}
               handleSelect={this.pillForm}
               handleChange={this.handlePillChange}
               newDose={this.newDose}
@@ -415,7 +426,7 @@ async destroyDose(doseId){
               destroyDose={this.destroyDose}
               updateDose={this.updateDoseForm}
               handleChange={this.handlePillChange}
-              selectedPill={this.state.selectedPill}
+              dose={this.state.dose}
               pillId={this.updateFormPillSelect}
             />
           )}/>
