@@ -1,4 +1,5 @@
 class DosesController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   before_action :set_dose, only: [:show, :update, :destroy]
 #   before_action :authenticate_user, only: [:update]
@@ -7,23 +8,29 @@ class DosesController < ApplicationController
   def index
     @dose = Dose.all
 
-    render json: @dose
+    render json: @dose, include: :pill
   end
 
   # GET /doses/1
   def show
-    render json: @dose, include: :pills
+    # render json: @dose, include: :pill
+
+    @user = User.find(params[:user_id])
+    render json: @user.doses, include: :pill
   end
 
   # POST /doses
   def create
     @dose = Dose.new(dose_params)
+    @user = User.find(params[:user_id])
+    @user.doses<< @dose
 
     if @dose.save
-      render json: @dose, status: :created, location: @dose
+      render json: @user, include: :doses
     else
       render json: @dose.errors, status: :unprocessable_entity
     end
+
   end
 
   # PATCH/PUT /dose/1
@@ -52,6 +59,6 @@ class DosesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def dose_params
-      params.require(:dose).permit(:name, :am_dose, :mid_dose, :pm_dose, :bed_dose)
+      params.require(:dose).permit(:pill_id, :am_dose, :mid_dose, :pm_dose, :bed_dose)
     end
 end

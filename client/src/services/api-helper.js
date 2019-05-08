@@ -12,24 +12,6 @@ export const loginUser = (loginData) => {
     .then(resp=>resp.json())
 }
 
-// export const registerUser = (registerData) => {
-//     const opts = {
-//         method: 'POST',
-//         body: JSON.stringify({ user: registerData }),
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//     };
-
-//     return fetch(`${baseUrl}/users/`, opts)
-//     .then(resp=> {
-//         console.log(opts.headers)
-//         console.log('resp', resp)
-//         resp.json()
-//     })
-//     .catch(err => console.log(err))
-// }
-
 export const registerUser = (registerData) => {
     const options = {
         method: 'POST', 
@@ -42,4 +24,70 @@ export const registerUser = (registerData) => {
     .then(resp => resp.json())
     .then(resp=> console.log(resp))
     .catch(err => console.log(err))
+}
+
+export const getPills = () => {
+    return fetch(`${baseUrl}/pills`)
+    .then(resp=>resp.json())
+}
+
+export const getDose = (userId) => {
+    const opts = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+        }
+      }
+    return fetch(`${baseUrl}/users/${userId}/doses`, opts)
+    .then(resp=>resp.json())
+}
+
+export const getUserInfo = (userId) => {
+    const opts = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+        }
+      }
+    return fetch(`${baseUrl}/users/${userId}`, opts)
+    .then(resp=>resp.json())
+}
+
+export const createDose= (data, userId) => {
+    const opts = {
+      method: 'POST',
+      body: JSON.stringify({ dose: data }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+      }
+    }
+    return fetch(`${baseUrl}/users/${userId}/doses`, opts)
+      .then(resp => resp.json())
+  }
+
+export const updateDose = (data, userId, doseId) => {
+    const opts = {
+        method: 'PUT',
+        body: JSON.stringify({ dose: data }),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+        }
+      }
+      return fetch(`${baseUrl}/users/${userId}/doses/${doseId}`, opts)
+      .then(resp => resp.json())
+}
+
+export const deleteDose = (userId, doseId) => {
+    const opts = {
+        method: 'DELETE',
+        body: JSON.stringify(doseId),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+        }
+      }
+    return fetch(`${baseUrl}/users/${userId}/doses/${doseId}`, opts)
+    .catch(e=> e.message.json())
 }
