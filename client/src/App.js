@@ -92,8 +92,8 @@ class App extends Component {
     this.showPills()
     const token = await localStorage.getItem('jwt')
     if (token) {
-      this.setDate()
-      this.setTime()
+      await this.setDate()
+      await this.setTime()
       const userData = await decode(token)
       this.setState({
         currentUser: userData
@@ -179,6 +179,7 @@ async handleLogin(){
     isLoggedIn: true,
   })
   localStorage.setItem('jwt', userData.token)
+  this.props.history.push('/home')
 }
 
 async handleRegister(e) {
@@ -329,7 +330,7 @@ async destroyDose(doseId){
               </>
               :
               <div className='welcome-Contain'>
-                <h2 className='welcome-h2'>Welcome To Your Pill Organizer!</h2>
+                <h2 className='welcome-h2'>Welcome To myPillBox!</h2>
                 <p className='welcome-p'>Login or Register to keep track of your daily medications.</p>
               </div>
             }
@@ -338,12 +339,6 @@ async destroyDose(doseId){
 
         <Switch>
         <Route exact path='/' render={()=> (
-        this.state.isLoggedIn
-          ?
-          <>
-            <Pillbox createNew={this.goToNewPill}/>
-          </>
-          :
           <div className='login-contain'>
             <Login
               handleLogin={this.handleLogin}
@@ -355,8 +350,13 @@ async destroyDose(doseId){
             handleChange={this.handleAuthChange}
             formData={this.state.authFormData}
             />
-          </div>          
-          )}/> 
+          </div>  
+        )}/> 
+
+          <Route exact path='/home' render={()=>(
+            <Pillbox createNew={this.goToNewPill}/>
+          )}/>
+
           <Route exact path='/instructions' render={()=> (
             <Instructions />
           )}/> 
