@@ -118,21 +118,22 @@
   width: 375px;
   display: flex;
   flex-direction: column;
-  background-color: #404756;
+  background-color: #9DDCFF;
   border-radius: 15px;
   padding: 10px;
   justify-content: space-around;
-  border: 1px solid white;
+  border: 2px solid #5CE5D5;
 }
 .pillbox-segment{
   height: 90px;
   width: 90%;
   margin: 0 auto;
   border-radius: 15px;
-  background-color: #E68EA1;
+  background-color: #6576EA;
   justify-content: space-around;
   align-items: center;
-  border: 2px solid white;
+  border: 3px solid #C1CFFC;
+  color: white;
 }
 .pillbox-title{
   margin: 0 auto;
