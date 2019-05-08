@@ -32,6 +32,7 @@ class App extends Component {
       },
       currentUser:{
       },
+      isLoggedIn: false,
       pillBox:{
         am: 'Morning',
         am_dose: 'am_dose',
@@ -97,9 +98,9 @@ class App extends Component {
       this.setState({
         currentUser: userData
       })
+      this.getDoses()
+      this.getUser()
     }
-    this.getDoses()
-  this.getUser()
   }
 
   setDate(){
@@ -174,7 +175,8 @@ handleLoginButton(){
 async handleLogin(){
   const userData = await loginUser(this.state.authFormData)
   this.setState({
-    currentUser: decode(userData.token)
+    currentUser: decode(userData.token),
+    isLoggedIn: true,
   })
   localStorage.setItem('jwt', userData.token)
 }
@@ -188,7 +190,8 @@ async handleRegister(e) {
 handleLogout(){
   localStorage.removeItem('jwt')
   this.setState({
-    currentUser:null
+    currentUser:null,
+    isLoggedIn: false,
   })
   this.props.history.push('/')
 }
@@ -311,7 +314,7 @@ async destroyDose(doseId){
       <div className="App">
         <header>
           <div className='login'>
-            {this.state.currentUser
+            {this.state.isLoggedIn
               ?
               <>
                 <div className='headerButton-contain'>
@@ -335,7 +338,7 @@ async destroyDose(doseId){
 
         <Switch>
         <Route exact path='/' render={()=> (
-        this.state.currentUser
+        this.state.isLoggedIn
           ?
           <>
             <Pillbox createNew={this.goToNewPill}/>
@@ -398,21 +401,6 @@ async destroyDose(doseId){
               handleSelect={this.pillForm}
               handleChange={this.handlePillChange}
               newDose={this.newDose}
-            />
-          )}/>
-          <Route exact path='/register' render={() => (
-            <Register 
-            handleRegister={this.handleRegister}
-            handleChange={this.handleAuthChange}
-            formData={this.state.authFormData}
-            />
-          )} />
-
-          <Route exact path='/login' render={() => (
-            <Login 
-            handleLogin={this.handleLogin}
-            handleChange={this.handleAuthChange}
-            formData={this.state.authFormData}
             />
           )}/>
 
