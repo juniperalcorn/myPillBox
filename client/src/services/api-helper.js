@@ -32,7 +32,24 @@ export const getPills = () => {
 }
 
 export const getDose = (userId) => {
-    return fetch(`${baseUrl}/users/${userId}/doses`)
+    const opts = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+        }
+      }
+    return fetch(`${baseUrl}/users/${userId}/doses`, opts)
+    .then(resp=>resp.json())
+}
+
+export const getUserInfo = (userId) => {
+    const opts = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+        }
+      }
+    return fetch(`${baseUrl}/users/${userId}`, opts)
     .then(resp=>resp.json())
 }
 
@@ -51,7 +68,7 @@ export const createDose= (data, userId) => {
 
 export const updateDose = (data, userId, doseId) => {
     const opts = {
-        method: 'UPDATE',
+        method: 'PUT',
         body: JSON.stringify({ dose: data }),
         headers: {
           'Content-Type': 'application/json',

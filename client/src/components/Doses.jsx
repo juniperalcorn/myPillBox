@@ -16,26 +16,26 @@ class Doses extends Component {
       if (this.props.filter==='am_dose'){
           return this.props.doses.map(dose=>(
               <Link to={`/viewpill/${dose.pill_id}`} key={dose.id} >
-                <div><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.am_dose} {dose.pill.name}</div>
+                <div className='individual-dose'><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.am_dose} {dose.pill.name}</div>
               </Link>
           ))
       } else if (this.props.filter==='mid_dose'){
         return this.props.doses.map(dose=>(
-            <div key={dose.id} value={dose.pill_id}>
-                <p><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.am_dose} {dose.pill.name}</p>
-            </div>
+            <Link to={`/viewpill/${dose.pill_id}`} key={dose.id} >
+                <div className='individual-dose'><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.mid_dose} {dose.pill.name}</div>
+            </Link>
         ))
     } else if (this.props.filter==='pm_dose'){
        return this.props.doses.map(dose=>(
-            <div key={dose.id} value={dose.pill_id}>
-                <p><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.am_dose} {dose.pill.name}</p>
-            </div>
+            <Link to={`/viewpill/${dose.pill_id}`} key={dose.id} >
+                <div className='individual-dose'><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.pm_dose} {dose.pill.name}</div>
+            </Link>
         ))
     } else if (this.props.filter==='bed_dose'){
        return this.props.doses.map(dose=>(
-            <div key={dose.id} value={dose.pill_id}>
-                <p><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.am_dose} {dose.pill.name}</p>
-            </div>
+            <Link to={`/viewpill/${dose.pill_id}`} key={dose.id} >
+                <div className='individual-dose'><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.bed_dose} {dose.pill.name}</div>
+            </Link>
         ))
     } 
   }
@@ -43,8 +43,9 @@ class Doses extends Component {
   render(){
   return (
     <div className="doses">
-        <h1>{this.props.header}</h1>
+        <h1 id='doses-header'>{this.props.header} Pills</h1>
         {this.showDoses()}
+        <div className='doses-instructions'>Click on a medication for more information, or to edit dose.</div>
     </div>
   );
   }

@@ -13,7 +13,10 @@ class DosesController < ApplicationController
 
   # GET /doses/1
   def show
-    render json: @dose, include: :pill
+    # render json: @dose, include: :pill
+
+    @user = User.find(params[:user_id])
+    render json: @user.doses, include: :pill
   end
 
   # POST /doses

@@ -29,12 +29,12 @@ class Pillbox extends Component {
   return (
     <div className="pillbox">
         <div className='pillbox-contain'>
-            <div className='pillbox-segment' onClick={this.goToAM}>AM</div>
-            <div className='pillbox-segment' onClick={this.goToMid}>Mid</div>
-            <div className='pillbox-segment' onClick={this.goToEvening}>PM</div>
-            <div className='pillbox-segment' onClick={this.goToBed}>Bed</div>
+            <div className='pillbox-segment' onClick={this.goToAM}><p className='pillbox-title'>Morning</p></div>
+            <div className='pillbox-segment' onClick={this.goToMid}><p className='pillbox-title'>Noon</p></div>
+            <div className='pillbox-segment' onClick={this.goToEvening}><p className='pillbox-title'>Evening</p></div>
+            <div className='pillbox-segment' onClick={this.goToBed}><p className='pillbox-title'>Bed</p></div>
         </div>
-        <button onClick={this.props.createNew}>Add New Pill</button>
+        <button className='createNew' onClick={this.props.createNew}>Add New Pill</button>
     </div>
   );
   }

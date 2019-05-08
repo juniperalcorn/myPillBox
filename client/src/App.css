@@ -1,69 +1,183 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 .App {
   text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  background-color: #FFCAA4;
+  height: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* HEADER */
+.login{
+  width: 100%;
+  height: 10%;
   color: white;
+}
+.headerButton-contain{
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.headerButton{
+  height: 50px;
+  min-width: 100px;
+  margin: 1em;
+  border-radius: 15px;
+  background-color: #005D59;
+  color: white;
+  font-size: 1em;
+  padding: 1em;
+  font-weight: 500;
+}
+.headerP{
+  color: black;
+  font-size: 1.5em;
+  margin: 1%;
+}
+.headerP-contain{
+  background-color: #DDCDE5;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
 }
 
 /* PILLBOX */
 .pillbox-contain{
   margin: 0 auto;
-  height: 350px;
-  width: 275px;
+  margin-top: 3%;
+  height: 450px;
+  width: 375px;
   display: flex;
   flex-direction: column;
-  background-color: blue;
+  background-color: #404756;
   border-radius: 15px;
   padding: 10px;
   justify-content: space-around;
+  border: 1px solid white;
 }
 .pillbox-segment{
-  height: 75px;
+  height: 90px;
   width: 90%;
   margin: 0 auto;
   border-radius: 15px;
-  background-color: red;
+  background-color: #E68EA1;
   justify-content: space-around;
+  align-items: center;
+  border: 2px solid white;
 }
-
-/* ADD PILL DROPDOWN */
-.add-pill{
-  height: auto;
- 
-}
-.dd-wrapper{
-  width: 300px;
-  border: black 1px solid;
+.pillbox-title{
   margin: 0 auto;
+  font-size: 2em;
+  margin-top: 6%;
+  font-weight: 600;
 }
-.dd-header{
-  height: auto;
-  border-bottom: black 1px solid;
-}
-.dd-title{
+.createNew{
+  height: 50px;
+  min-width: 150px;
+  margin: 1em;
+  border-radius: 15px;
+  background-color: #9D3776;
+  color: white;
+  font-size: 1em;
+  padding: 1em;
   font-weight: 500;
 }
-.dd-list{
-  height: 200px;
-  overflow: scroll;
-}
-.dd-list-item{
+
+/* ADD PILL */
+.add-pill{
+  margin: 3% auto 3% auto;
   height: auto;
-  padding-top: 20px;
-  list-style: none;
-  text-align: left;
+  width: 50%;
+  border: 2px solid white;
+  border-radius: 15px;
+  background-color: #9BD3AC;
+  color: #00391B;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+}
+select{
+  height: 3em;
+  font-size: 1em;
+  margin: 0 20% 0 20%;
+}
+.add-pill-label{
+  line-height: 1em;
+  font-size: 1.25em;
+  font-weight: 600;
+}
+.add-pill-input{
+  height: 3em;
+  font-size: 1em;
+  width: 9em;
+  text-align: center;
+  border-radius: 15px;
+}
+#submitNew{
+  height: 50px;
+  min-width: 150px;
+  margin: 1em;
+  border-radius: 15px;
+  background-color: #D9EDDF;
+  color: #00391B;
+  font-size: 1.25em;
+  font-weight: 500;
+  border: 2px solid white;
 }
 
 /*DOSES*/
 .doses{
   height: auto;
   margin: 0 auto;
+  background-color: #E68EA1;
+  border: 2px solid grey;
+  width: 60%;
+  margin: 3% auto 3% auto;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#doses-header{
+  color: #392932;
+}
+.individual-dose{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 2%;
+  margin-bottom: 8%;
+  border: 2px solid lightgrey;
+  border-radius: 15px;
+  background-color: #FFE3ED;
+  font-size: 1.25em;
+  font-weight: 600;
+}
+.doses-instructions{
+  font-size: 1.25em;
+  font-weight: 600;
+  margin: 3% auto 3% auto;
+}
+img{
+  max-height: 100px;
+  border-radius: 15px;
+}
+a {
+  text-decoration: none;
+}
+
+/* VIEW PILL */
+.viewPill-h2{
+  font-weight: 600;
+  font-size: 2em;
+}
+li{
+  list-style: none;
+  font-size: 1.25em;
+  font-weight: 600;
+}
+.doseNumber{
+  font-size: 2em;
+  font-weight: 600;
 }

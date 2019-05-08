@@ -6,7 +6,7 @@ import { withRouter } from 'react-router'
 import decode from 'jwt-decode'
 
 //api
-import { loginUser, registerUser, getPills, getDose, createDose, updateDose, deleteDose } from './services/api-helper'
+import { loginUser, registerUser, getPills, getDose, createDose, updateDose, deleteDose, getUserInfo } from './services/api-helper'
 
 //components
 import Welcome from './components/Welcome'
@@ -83,20 +83,24 @@ class App extends Component {
     this.updateFormPillSelect=this.updateFormPillSelect.bind(this)
     this.destroyDose=this.destroyDose.bind(this)
     this.updateDoseForm=this.updateDoseForm.bind(this)
+
+
+    this.getUser=this.getUser.bind(this)
   }
 
-  componentDidMount(){
+  async componentDidMount(){
     this.showPills()
-    this.getDoses()
-    const token = localStorage.getItem('jwt')
+    const token = await localStorage.getItem('jwt')
     if (token) {
       this.setDate()
       this.setTime()
-      const userData = decode(token)
+      const userData = await decode(token)
       this.setState({
         currentUser: userData
       })
     }
+    this.getDoses()
+  this.getUser()
   }
 
   setDate(){
@@ -213,9 +217,17 @@ goToNewPill(){
 //-------API
 async getDoses() {
   const doses = await getDose(this.state.currentUser.user_id)
+  console.log('getDoses app.js', doses)
+  const userDoses = doses.filter(dose=>dose.user_id === this.state.currentUser.user_id)
+  console.log('user doses', userDoses)
   this.setState({
-    doses
+    doses:userDoses
   })
+}
+
+async getUser(){
+  const user = await getUserInfo(this.state.currentUser.user_id)
+  console.log('get user in app.js', user.doses)
 }
 
 async newDose(e){
@@ -233,9 +245,8 @@ async newDose(e){
   }))
 }
 
-async updateDoseForm(e, doseId){
-  e.preventDefault()
-  const doseUpdate = await updateDose(this.state.selectedPill, this.state.currentUser.user_id, doseId)
+async updateDoseForm(userId, doseId){
+  const doseUpdate = await updateDose(this.state.selectedPill, userId, doseId)
   this.setState(prevState=>({
     doses: prevState.doses.map(el=> el.id === doseId ? doseUpdate : el),
     selectedPill:{
@@ -246,6 +257,8 @@ async updateDoseForm(e, doseId){
       bed_dose:'',
     }
   }))
+  console.log('update dose complete')
+  // window.location.reload()
 }
 
 updateFormPillSelect(params){
@@ -298,35 +311,38 @@ async destroyDose(doseId){
     return (
       <div className="App">
         <header>
-          <div>
+          <div className='login'>
             {this.state.currentUser
               ?
               <>
-                <button onClick={this.handleLogout}>Logout</button>
-                <button onClick={this.props.history.goBack}>Back</button>
-                <button onClick={this.showInstructions}>How To Use This App</button>
-                <p>Welcome {this.state.currentUser.username}</p>
-                <p>{this.state.date}, {this.state.time}</p>
+                <div className='headerButton-contain'>
+                  <button className='headerButton' onClick={this.handleLogout}>Logout</button>
+                  <button className='headerButton' onClick={()=>(this.props.history.push('/'))}>Pill Box</button>
+                  <button className='headerButton' onClick={this.showInstructions}>How To Use This App</button>
+                </div>
+                <div className='headerP-contain'>
+                  <div className='headerP'>Welcome, {this.state.currentUser.username}!</div>
+                  <div className='headerP'>{this.state.date}, {this.state.time}</div>
+                </div>
               </>
               :
-              <button onClick={this.handleLoginButton}>Login/register</button>
+              <button className='headerButton' onClick={this.handleLoginButton}>Login/register</button>
             }
           </div>
         </header>
 
-
-        {this.state.currentUser
-        ?
-        <>
-          <Pillbox createNew={this.goToNewPill}/>
-        </>
-        :
-        <>
-          <Welcome/>
-        </>
-        }
-
         <Switch>
+        <Route exact path='/' render={()=> (
+        this.state.currentUser
+          ?
+          <>
+            <Pillbox createNew={this.goToNewPill}/>
+          </>
+          :
+          <>
+            <Welcome/>
+          </>          
+          )}/> 
           <Route exact path='/instructions' render={()=> (
             <Instructions />
           )}/> 
