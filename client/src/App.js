@@ -259,6 +259,7 @@ async newDose(e){
       bed_dose:'',
     }
   }))
+  this.props.history.push('/home')
 }
 
 async updateDoseForm(userId, doseId){

@@ -25,6 +25,11 @@ class DosesController < ApplicationController
       @dose = Dose.new(dose_params)
       @user = User.find(params[:user_id])
       @user.doses << @dose
+      if @dose.save
+        render json: @dose
+      else
+        render json: @dose.errors, status: :unprocessable_entity
+      end
     elsif params[:id]
       @dose = Dose.new(dose_params)
       if @dose.save
