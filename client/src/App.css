@@ -32,6 +32,7 @@
   flex-direction: row;
   justify-content: left;
   align-items: baseline;
+  flex-wrap: wrap;
 }
 .headerButton{
   height: 50px;
@@ -45,6 +46,10 @@
   padding-right: 1em;
   padding-left: 1em;
   border: 2px solid #EA55B1;
+}
+.createNew.headButt{
+  font-size: 1em;
+  font-weight: 600;
 }
 .headerP{
   color: #FEC763;
@@ -123,6 +128,7 @@
   padding: 10px;
   justify-content: space-around;
   border: 2px solid #5CE5D5;
+  margin-bottom: 5%;
 }
 .pillbox-segment{
   height: 90px;
