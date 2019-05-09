@@ -70,7 +70,7 @@ class AddPill extends Component {
                 </div>
 
                 <br/>
-                <button id='submitNew'>Submit</button>
+                <button className='submitNew'>Submit</button>
            
             </form>
         </div>

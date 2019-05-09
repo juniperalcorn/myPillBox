@@ -197,7 +197,7 @@ select{
   color: #000a1c;
   font-weight: 600;
 }
-#submitNew{
+.submitNew{
   height: 50px;
   min-width: 150px;
   margin: 1em;
@@ -235,7 +235,7 @@ select{
   width: 100%;
   margin: 2%;
   margin-bottom: 8%;
-  border: 2px solid lightgrey;
+  border: 2px solid #5CE5D5;
   border-radius: 15px;
   background-color: #FFE3ED;
   font-size: 1.25em;
@@ -257,16 +257,97 @@ a {
 }
 
 /* VIEW PILL */
+
 .viewPill-h2{
   font-weight: 600;
   font-size: 2em;
+}
+ul{
+  padding-inline-start: 0;
+  background-color: #FFE3ED;
+  width: 15em;
+  padding: 1em;
+  border-radius: 15px;
+  border: 2px solid #5CE5D5;
 }
 li{
   list-style: none;
   font-size: 1.25em;
   font-weight: 600;
+  margin: 0;
+  
 }
 .doseNumber{
   font-size: 2em;
   font-weight: 600;
+}
+#singlePillImg{
+  max-height: 10em;
+  border: 2px solid #5CE5D5;
+  margin-top: 3.5em;
+}
+.doseContain{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.doseList{
+  display: flex;
+  flex-direction: column;
+}
+
+/* EDIT FORM */
+
+.doseList.edit{
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #5CE5D5;
+  border-radius: 15px;
+  background-color: #FFE3ED;
+  margin-bottom: 1em;
+}
+.editOpt{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 5%;
+}
+.editLabel{
+  line-height: 1em;
+  font-size: 1.25em;
+  font-weight: 600;
+}
+.editInput{
+  height: 3em;
+  font-size: 1em;
+  width: 9em;
+  text-align: center;
+  border-radius: 15px;
+  background-color: #E8F3F1;
+  margin-left: 1%;
+  margin-right: 1%;
+  color: #000a1c;
+  font-weight: 600;
+}
+.submitNew.edit{
+  background-color: #9BD3AC;
+  padding: .5em;
+}
+
+
+@media screen and (max-width: 480px) and (min-width: 320px){
+
+  .doseContain{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #singlePillImg{
+    max-height: 7em;
+    margin-top: 0;
+  }
+
 }
