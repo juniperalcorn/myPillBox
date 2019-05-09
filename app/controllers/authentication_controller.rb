@@ -4,7 +4,6 @@ class AuthenticationController < ApplicationController
     
     def login
         @user = User.find_by_username(params[:username])
-        binding.pry
         if @user && @user.authenticate(params[:password])
             token = JsonWebToken.encode(user_id: @user.id, username: @user.username)
             render json: { token: token }, status: :ok
