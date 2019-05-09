@@ -1,4 +1,5 @@
-const baseUrl = 'http://localhost:3000'
+// const baseUrl = 'http://localhost:3000'
+const baseUrl = 'http://pill-organizer-ja.herokuapp.com'
 
 export const loginUser = (loginData) => {
     const opts = {
