@@ -85,7 +85,12 @@ class ViewPill extends Component {
                                 <br/>
                             <button className='headerButton view'>Submit Changes</button>
                             </form>
-                            <Modal show={this.state.modal} handleClose={this.hideModal}>
+                            <Modal 
+                                show={this.state.modal} 
+                                handleClose={this.hideModal}
+                                handleDelete={this.props.destroyDose}
+                                pillId={singlePill.id}
+                                >
                             </Modal>
                             <button className='createNew update' onClick={this.showModal}>Modal Delete</button>
 
