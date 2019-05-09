@@ -3,9 +3,7 @@ class AuthenticationController < ApplicationController
 
     
     def login
-        # @user = User.find_by_username(params[:username])
-        @user = User.find(params[:username])
-
+        @user = User.find_by_username(params[:username])
         
         if @user.authenticate(params[:password])
             token = JsonWebToken.encode(user_id: @user.id, username: @user.username)
