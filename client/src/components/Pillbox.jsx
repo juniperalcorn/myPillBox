@@ -34,7 +34,6 @@ class Pillbox extends Component {
             <div className='pillbox-segment' onClick={this.goToEvening}><p className='pillbox-title'>Evening</p></div>
             <div className='pillbox-segment' onClick={this.goToBed}><p className='pillbox-title'>Bed</p></div>
         </div>
-        <button className='createNew' onClick={this.props.createNew}>Add New Pill</button>
     </div>
   );
   }

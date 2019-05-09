@@ -39,43 +39,63 @@ class ViewPill extends Component {
     const singlePill = this.state.doses.find((dose) => dose.pill_id===params)
         return (
             <div className="doses">
-                    <h2 className='viewPill-h2'>Pill Detail</h2>
-                    <h2 className='viewPill-h2'>{singlePill && singlePill.pill.name}, {singlePill && singlePill.pill.mg}mg</h2>
-                    <img src={singlePill && singlePill.pill.img} alt='Pill'/>
+                <h2 className='viewPill-h2'>Pill Detail: {singlePill && singlePill.pill.name}, {singlePill && singlePill.pill.mg}mg</h2>
+                
+                <div className='doseContain'>
+                <img id='singlePillImg' src={singlePill && singlePill.pill.img} alt='Pill'/>
+                    
+                    
                     {this.state.isEdit
                     ?
                     <>
-                    <form onSubmit={(e)=>{
-                    e.preventDefault()
-                    this.props.updateDose(singlePill.user_id, this.state.singlePill.id)
-                    this.setState({isEdit: false})
-                    }}>
-                        <p>Morning Dose:</p>
-                        <input name='am_dose' type='text' placeholder={singlePill && singlePill.am_dose} value={this.props.dose.am_dose} onChange={this.props.handleChange}></input>
-                        <p>Midday Dose:</p>
-                        <input name='mid_dose' type='text' placeholder={singlePill && singlePill.mid_dose} value={this.props.dose.mid_dose} onChange={this.props.handleChange}></input>
-                        <p>PM Dose:</p>
-                        <input name='pm_dose' type='text' placeholder={singlePill && singlePill.pm_dose} value={this.props.dose.pm_dose} onChange={this.props.handleChange}></input>
-                        <p>Bed Dose:</p>
-                        <input name='bed_dose' type='text' placeholder={singlePill && singlePill.bed_dose} value={this.props.dose.bed_dose} onChange={this.props.handleChange}></input>
-                        <br/>
-                    <button>Submit Changes</button>
-                    </form>
-                    <button onClick={()=>{this.props.destroyDose(singlePill.id)}}>Delete</button>
+                        <div className='doseList edit'>
+                            <form onSubmit={(e)=>{
+                            e.preventDefault()
+                            this.props.updateDose(singlePill.user_id, this.state.singlePill.id)
+                            this.setState({isEdit: false})
+                            }}>
+                                <div className='editOpt'>
+                                <span className='editLabel'>Morning Dose:</span>
+                                <span className='editInput-span'><input className='editInput' name='am_dose' type='text' placeholder={singlePill && singlePill.am_dose} value={this.props.dose.am_dose} onChange={this.props.handleChange}></input></span>
+                                </div>
+
+                                <div className='editOpt'>
+                                <span className='editLabel'>Midday Dose:</span>
+                                <span className='editInput-span'><input className='editInput' name='mid_dose' type='text' placeholder={singlePill && singlePill.mid_dose} value={this.props.dose.mid_dose} onChange={this.props.handleChange}></input></span>
+                                </div>
+
+                                <div className='editOpt'>
+                                <span className='editLabel'>PM Dose:</span>
+                                <span className='editInput-span'><input className='editInput' name='pm_dose' type='text' placeholder={singlePill && singlePill.pm_dose} value={this.props.dose.pm_dose} onChange={this.props.handleChange}></input></span>
+                                </div>
+
+                                <div className='editOpt'>
+                                <span className='editLabel'>Bed Dose:</span>
+                                <span className='editInput-span'><input className='editInput' name='bed_dose' type='text' placeholder={singlePill && singlePill.bed_dose} value={this.props.dose.bed_dose} onChange={this.props.handleChange}></input></span>
+                                </div>
+                                <br/>
+                            <button className='submitNew edit'>Submit Changes</button>
+                            </form>
+                        
+                            <button className='createNew update' onClick={()=>{this.props.destroyDose(singlePill.id)}}>Delete</button>
+                        </div>
                     </>
                     :
                     <>
-                    <ul>
-                        <li>Morning dose: <span className='doseNumber'>{singlePill && singlePill.am_dose}</span></li>
-                        <li>Midday dose: <span className='doseNumber'>{singlePill && singlePill.mid_dose}</span></li>
-                        <li>Evening dose: <span className='doseNumber'>{singlePill && singlePill.pm_dose}</span></li>
-                        <li>Bedtime dose: <span className='doseNumber'>{singlePill && singlePill.bed_dose}</span></li>
-                    </ul>  
-                    
-                    <button className='createNew' onClick={()=>{this.setState({isEdit: singlePill.id})}}>Update</button>
+                        <div className='doseList'>
+                            <ul>
+                                <li>Morning dose: <span className='doseNumber'>{singlePill && singlePill.am_dose}</span></li>
+                                <li>Midday dose: <span className='doseNumber'>{singlePill && singlePill.mid_dose}</span></li>
+                                <li>Evening dose: <span className='doseNumber'>{singlePill && singlePill.pm_dose}</span></li>
+                                <li>Bedtime dose: <span className='doseNumber'>{singlePill && singlePill.bed_dose}</span></li>
+                            </ul>  
+                        </div>   
+                        <button className='createNew update' onClick={()=>{this.setState({isEdit: singlePill.id})}}>Update</button>
+                        
                     </>
                     }
-
+                    
+                </div>      
             </div>
   );
   }

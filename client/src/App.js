@@ -32,10 +32,12 @@ class App extends Component {
       },
       currentUser:{
       },
+      isLoggedIn: false,
+      isRegister:false,
       pillBox:{
         am: 'Morning',
         am_dose: 'am_dose',
-        mid: 'Midday',
+        mid: 'Noon',
         mid_dose: 'mid_dose',
         pm: 'Evening',
         pm_dose: 'pm_dose',
@@ -82,7 +84,8 @@ class App extends Component {
     this.updateFormPillSelect=this.updateFormPillSelect.bind(this)
     this.destroyDose=this.destroyDose.bind(this)
     this.updateDoseForm=this.updateDoseForm.bind(this)
-
+    this.switchLoginToRegister=this.switchLoginToRegister.bind(this)
+    this.switchRegisterToLogin=this.switchRegisterToLogin.bind(this)
 
     this.getUser=this.getUser.bind(this)
   }
@@ -91,15 +94,16 @@ class App extends Component {
     this.showPills()
     const token = await localStorage.getItem('jwt')
     if (token) {
-      this.setDate()
-      this.setTime()
+      await this.setDate()
+      await this.setTime()
       const userData = await decode(token)
       this.setState({
-        currentUser: userData
+        currentUser: userData,
+        isLoggedIn:true
       })
+      this.getDoses()
+      this.getUser()
     }
-    this.getDoses()
-  this.getUser()
   }
 
   setDate(){
@@ -171,26 +175,38 @@ handleLoginButton(){
   this.props.history.push('/login')
 }
 
+switchLoginToRegister(){
+  this.setState({isRegister: true})
+}
+switchRegisterToLogin(){
+  this.setState({isRegister: false})
+}
+
 async handleLogin(){
   const userData = await loginUser(this.state.authFormData)
   this.setState({
-    currentUser: decode(userData.token)
+    currentUser: decode(userData.token),
+    isLoggedIn: true,
   })
   localStorage.setItem('jwt', userData.token)
+  this.props.history.push('/home')
 }
 
 async handleRegister(e) {
   e.preventDefault()
   await registerUser(this.state.authFormData)
+  this.setState({isRegister:false})
   this.handleLogin()
 }
 
 handleLogout(){
   localStorage.removeItem('jwt')
   this.setState({
-    currentUser:null
+    currentUser:null,
+    isLoggedIn: false,
   })
   this.props.history.push('/')
+  window.location.reload()
 }
 
 handleAuthChange(e){
@@ -208,7 +224,7 @@ showInstructions(){
   this.props.history.push('/instructions')
 }
 returnHome(){
-  this.props.history.push('/')
+  this.props.history.push('/home')
 }
 goToNewPill(){
   this.props.history.push('/create-new')
@@ -311,22 +327,26 @@ async destroyDose(doseId){
       <div className="App">
         <header>
           <div className='login'>
-            {this.state.currentUser
+            {this.state.isLoggedIn
               ?
               <>
+                <div className='top-page'>
                 <div className='headerButton-contain'>
                   <button className='headerButton' onClick={this.handleLogout}>Logout</button>
-                  <button className='headerButton' onClick={()=>(this.props.history.push('/'))}>Pill Box</button>
+                  <button className='headerButton' onClick={()=>(this.props.history.push('/home'))}>Pill Box</button>
                   <button className='headerButton' onClick={this.showInstructions}>How To Use This App</button>
+                  <button className='createNew headButt' onClick={this.createNew}>Add New Pill</button>
+                </div>
+                <div className='title'>myPillBox</div>
                 </div>
                 <div className='headerP-contain'>
-                  <div className='headerP'>Welcome, {this.state.currentUser.username}!</div>
+                  <div className='headerP'>Welcome, {this.state.currentUser.username} !</div>
                   <div className='headerP'>{this.state.date}, {this.state.time}</div>
                 </div>
               </>
               :
               <div className='welcome-Contain'>
-                <h2 className='welcome-h2'>Welcome To Your Pill Organizer!</h2>
+                <h2 className='welcome-h2'>Welcome To myPillBox!</h2>
                 <p className='welcome-p'>Login or Register to keep track of your daily medications.</p>
               </div>
             }
@@ -334,26 +354,32 @@ async destroyDose(doseId){
         </header>
 
         <Switch>
-        <Route exact path='/' render={()=> (
-        this.state.currentUser
-          ?
-          <>
-            <Pillbox createNew={this.goToNewPill}/>
-          </>
-          :
-          <div className='login-contain'>
-            <Login
-              handleLogin={this.handleLogin}
-              handleChange={this.handleAuthChange}
-              formData={this.state.authFormData}
-            />
+          <Route exact path='/' render={()=> (
+            this.state.isRegister 
+            ?
+            <div className='login-contain'>
             <Register 
             handleRegister={this.handleRegister}
             handleChange={this.handleAuthChange}
             formData={this.state.authFormData}
+            switchToLogin={this.switchRegisterToLogin}
             />
-          </div>          
+            </div>
+            :
+            <div className='login-contain'>
+              <Login
+                handleLogin={this.handleLogin}
+                handleChange={this.handleAuthChange}
+                formData={this.state.authFormData}
+                switchToRegister={this.switchLoginToRegister}
+              />
+            </div>  
           )}/> 
+
+          <Route exact path='/home' render={()=>(
+            <Pillbox createNew={this.goToNewPill}/>
+          )}/>
+
           <Route exact path='/instructions' render={()=> (
             <Instructions />
           )}/> 
@@ -365,7 +391,7 @@ async destroyDose(doseId){
             pills={this.state.pills}
             onClick={this.choosePillToView}/>
           )}/> 
-          <Route exact path='/midday' render={()=> (
+          <Route exact path='/noon' render={()=> (
             <Doses 
             header={this.state.pillBox.mid}
             filter={this.state.pillBox.mid_dose}
@@ -398,21 +424,6 @@ async destroyDose(doseId){
               handleSelect={this.pillForm}
               handleChange={this.handlePillChange}
               newDose={this.newDose}
-            />
-          )}/>
-          <Route exact path='/register' render={() => (
-            <Register 
-            handleRegister={this.handleRegister}
-            handleChange={this.handleAuthChange}
-            formData={this.state.authFormData}
-            />
-          )} />
-
-          <Route exact path='/login' render={() => (
-            <Login 
-            handleLogin={this.handleLogin}
-            handleChange={this.handleAuthChange}
-            formData={this.state.authFormData}
             />
           )}/>
 
