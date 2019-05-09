@@ -335,7 +335,7 @@ async destroyDose(doseId){
                   <button className='headerButton' onClick={this.handleLogout}>Logout</button>
                   <button className='headerButton' onClick={()=>(this.props.history.push('/home'))}>Pill Box</button>
                   <button className='headerButton' onClick={this.showInstructions}>How To Use This App</button>
-                  <button className='createNew headButt' onClick={this.createNew}>Add New Pill</button>
+                  <button className='createNew headButt' onClick={this.goToNewPill}>Add New Pill</button>
                 </div>
                 <div className='title'>myPillBox</div>
                 </div>
@@ -377,7 +377,7 @@ async destroyDose(doseId){
           )}/> 
 
           <Route exact path='/home' render={()=>(
-            <Pillbox createNew={this.goToNewPill}/>
+            <Pillbox />
           )}/>
 
           <Route exact path='/instructions' render={()=> (
