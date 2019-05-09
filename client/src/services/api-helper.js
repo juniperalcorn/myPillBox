@@ -63,8 +63,11 @@ export const createDose= (data, userId) => {
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`
       }
     }
+    console.log('headers', opts)
     return fetch(`${baseUrl}/users/${userId}/doses`, opts)
       .then(resp => resp.json())
+      .then(resp=> console.log(resp))
+      .catch(err => console.log(err))
   }
 
 export const updateDose = (data, userId, doseId) => {
