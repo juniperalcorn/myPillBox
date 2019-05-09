@@ -17,7 +17,7 @@ class Pillbox extends Component {
     this.props.history.push('/morning')
   }
   goToMid(){
-      this.props.history.push('/midday')
+      this.props.history.push('/noon')
   }
   goToEvening(){
       this.props.history.push('/evening')
