@@ -337,6 +337,36 @@ li{
   padding: .5em;
 }
 
+/* INSTRUCTIONS */
+.instructions{
+  display: flex;
+  flex-direction: row;
+  background-color: #00207F;
+  border: 2px solid #EA55B1;
+  margin: 5%;
+  border-radius: 15px;
+  color: #FEC763;
+}
+.instructions-content{
+  align-content: left;
+  margin: 5%;
+  text-align: justify;
+}
+.instructions-title{
+  color: #B8FB3C;
+  text-align: center;
+}
+.instructions-logo{
+  color: #B8FB3C;
+  font-size: 1.25em;
+}
+.instructions-title-logo{
+  font-size: 1.25em;
+}
+.highlight{
+  color: #EA55B1;
+}
+
 
 @media screen and (max-width: 480px) and (min-width: 320px){
 
