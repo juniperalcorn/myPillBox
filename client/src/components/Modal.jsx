@@ -12,7 +12,7 @@ class Modal extends Component {
             <div className={showHideModal}>
                 <div className = 'modal-main'>
                     <div className='modal-header'>
-                        <span className='instructions-title-logo'>myPillBox</span><button className='modal-x'onClick={this.props.handleClose}>X</button>
+                        <span className='instructions-title-logo'>myPillBox</span><button className='modal-x'onClick={this.props.handleClose}>EXIT</button>
                     </div>
 
                     <div className='modal-body'>

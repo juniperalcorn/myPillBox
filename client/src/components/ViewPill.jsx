@@ -92,9 +92,7 @@ class ViewPill extends Component {
                                 pillId={singlePill.id}
                                 >
                             </Modal>
-                            <button className='createNew update' onClick={this.showModal}>Modal Delete</button>
-
-                            <button className='createNew update' onClick={()=>{this.props.destroyDose(singlePill.id)}}>Delete</button>
+                            <button className='createNew update' onClick={this.showModal}>Delete</button>
                         </div>
                     </>
                     :
