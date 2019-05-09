@@ -13,7 +13,7 @@ module PillOrganizer
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
-    config.autoload_paths << Rails.root.join('lib')
+    config.eager_load_paths << Rails.root.join('lib')
 
     # config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
     #   allow do
