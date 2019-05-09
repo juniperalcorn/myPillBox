@@ -224,7 +224,7 @@ showInstructions(){
   this.props.history.push('/instructions')
 }
 returnHome(){
-  this.props.history.push('/')
+  this.props.history.push('/home')
 }
 goToNewPill(){
   this.props.history.push('/create-new')
@@ -333,7 +333,7 @@ async destroyDose(doseId){
                 <div className='top-page'>
                 <div className='headerButton-contain'>
                   <button className='headerButton' onClick={this.handleLogout}>Logout</button>
-                  <button className='headerButton' onClick={()=>(this.props.history.push('/'))}>Pill Box</button>
+                  <button className='headerButton' onClick={()=>(this.props.history.push('/home'))}>Pill Box</button>
                   <button className='headerButton' onClick={this.showInstructions}>How To Use This App</button>
                 </div>
                 <div className='title'>myPillBox</div>
@@ -353,27 +353,27 @@ async destroyDose(doseId){
         </header>
 
         <Switch>
-        <Route exact path='/' render={()=> (
-          this.state.isRegister 
-          ?
-          <div className='login-contain'>
-          <Register 
-          handleRegister={this.handleRegister}
-          handleChange={this.handleAuthChange}
-          formData={this.state.authFormData}
-          switchToLogin={this.switchRegisterToLogin}
-          />
-          </div>
-          :
-          <div className='login-contain'>
-            <Login
-              handleLogin={this.handleLogin}
-              handleChange={this.handleAuthChange}
-              formData={this.state.authFormData}
-              switchToRegister={this.switchLoginToRegister}
+          <Route exact path='/' render={()=> (
+            this.state.isRegister 
+            ?
+            <div className='login-contain'>
+            <Register 
+            handleRegister={this.handleRegister}
+            handleChange={this.handleAuthChange}
+            formData={this.state.authFormData}
+            switchToLogin={this.switchRegisterToLogin}
             />
-          </div>  
-        )}/> 
+            </div>
+            :
+            <div className='login-contain'>
+              <Login
+                handleLogin={this.handleLogin}
+                handleChange={this.handleAuthChange}
+                formData={this.state.authFormData}
+                switchToRegister={this.switchLoginToRegister}
+              />
+            </div>  
+          )}/> 
 
           <Route exact path='/home' render={()=>(
             <Pillbox createNew={this.goToNewPill}/>

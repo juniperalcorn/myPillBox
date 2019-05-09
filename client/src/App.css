@@ -38,13 +38,13 @@
   min-width: 100px;
   margin: 1em;
   border-radius: 15px;
-  background-color: #7898fb;
-  color: #001437;
+  background-color:  #00207F;
+  color: #B8FB3C;
   font-size: 1em;
   font-weight: 600;
   padding-right: 1em;
   padding-left: 1em;
-  border: 2px solid #B8FB3C;
+  border: 2px solid #EA55B1;
 }
 .headerP{
   color: #FEC763;
@@ -81,7 +81,7 @@
   flex-direction: row;
   justify-content: space-around;
   padding-bottom: 10%;
-  color: #001437;
+  color: #000a1c;
 }
 .auth-container{
   width: 50%;
@@ -95,7 +95,7 @@
   align-content: right;
 }
 .headerButton.auth{
-  border: 2px solid #001437;
+  border: 2px solid #5CE5D5;
 }
 .register-div{
   width: 75%;
@@ -148,9 +148,8 @@
   border-radius: 15px;
   background-color: #9D3776;
   color: white;
-  font-size: 1em;
-  padding: 1em;
-  font-weight: 500;
+  font-size: 1.25em;
+  font-weight: 600;
 }
 
 /* ADD PILL */
@@ -158,8 +157,8 @@
   margin: 3% auto 3% auto;
   height: auto;
   width: 50%;
-  border: 2px solid white;
   border-radius: 15px;
+  border: 2px solid #5CE5D5;
   border: 2px;
   background-color: #9BD3AC;
   color: #00391B;
@@ -170,9 +169,18 @@
 select{
   height: 3em;
   font-size: 1em;
-  margin: 0 20% 0 20%;
+  margin: 0 18% 0 18%;
+  background-color: #E8F3F1;
 }
-.add-pill-label{
+
+.add-pill-opt{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 5%;
+}
+.add-pill-label-span{
   line-height: 1em;
   font-size: 1.25em;
   font-weight: 600;
@@ -186,6 +194,8 @@ select{
   background-color: #E8F3F1;
   margin-left: 1%;
   margin-right: 1%;
+  color: #000a1c;
+  font-weight: 600;
 }
 #submitNew{
   height: 50px;
@@ -203,14 +213,15 @@ select{
 .doses{
   height: auto;
   margin: 0 auto;
-  background-color: #E68EA1;
-  border: 2px solid grey;
+  background-color: #9BD3AC;
+  border: 2px solid #5CE5D5;
   width: 60%;
   margin: 3% auto 3% auto;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #00391B;
 }
 #doses-header{
   color: #392932;
@@ -220,6 +231,8 @@ select{
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  height: 5.5em;
+  width: 100%;
   margin: 2%;
   margin-bottom: 8%;
   border: 2px solid lightgrey;
@@ -227,15 +240,17 @@ select{
   background-color: #FFE3ED;
   font-size: 1.25em;
   font-weight: 600;
+  padding-right: .5em;
 }
 .doses-instructions{
   font-size: 1.25em;
   font-weight: 600;
-  margin: 3% auto 3% auto;
+  margin: 4% auto 4% auto;
 }
 img{
-  max-height: 100px;
+  max-height: 5em;
   border-radius: 15px;
+  margin-right: .5em;
 }
 a {
   text-decoration: none;
