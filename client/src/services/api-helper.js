@@ -85,9 +85,9 @@ export const deleteDose = (userId, doseId) => {
         body: JSON.stringify(doseId),
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+          'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
         }
       }
     return fetch(`${baseUrl}/users/${userId}/doses/${doseId}`, opts)
-    .catch(e=> e.message.json())
+    .catch(e=> e.message)
 }

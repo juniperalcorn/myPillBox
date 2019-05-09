@@ -319,7 +319,7 @@ async destroyDose(doseId){
   this.setState(prevState=>({
     doses: prevState.doses.filter(el => el.id !== doseId)
   }))
-  this.props.history.push('/')
+  this.props.history.push('/home')
 }
 
   render(){
