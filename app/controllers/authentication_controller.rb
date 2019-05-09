@@ -4,7 +4,7 @@ class AuthenticationController < ApplicationController
     
     def login
         # @user = User.find_by_username(params[:username])
-        @user = User.find_by(username: :username)
+        @user = User.find(params[:username])
 
         
         if @user.authenticate(params[:password])
