@@ -25,7 +25,7 @@ const Instructions = (props) => {
 
             <p>On the <span className='highlight'>home page</span>, users can view <span className='instructions-logo'>myPillBox</span>, with segments for Morning, Midday, Evening, and Bedtime medications.</p>
 
-            <p>To add a new pill, click on the <span className='highlight'>"Add a New Pill"</span> button below the pillbox. Choose a pill/dosage from the drop down menu, and enter the number of pills you should take for each time of day. If you don't take any pills, don't enter a number. Click <span className='highlight'>"Submit"</span> to save the pill information.</p>
+            <p>To add a new pill, click on the <span className='highlight'>"Add a New Pill"</span> button at the top of the page. Choose a pill/dosage from the drop down menu, and enter the number of pills you should take for each time of day. If you don't take any pills, don't enter a number. Click <span className='highlight'>"Submit"</span> to save the pill information.</p>
 
             <p>Click on the pillbox time-of-day sections to see a list of the pills you should take, with images. Click on any pill listed to view the complete dosing schedule for that pill.</p>
 
