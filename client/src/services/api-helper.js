@@ -65,6 +65,8 @@ export const createDose= (data, userId) => {
     }
     return fetch(`${baseUrl}/users/${userId}/doses`, opts)
       .then(resp => resp.json())
+      .then(resp=> console.log(resp))
+      .catch(err => console.log(err))
   }
 
 export const updateDose = (data, userId, doseId) => {
