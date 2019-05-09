@@ -219,8 +219,8 @@ select{
 .doses{
   height: auto;
   margin: 0 auto;
-  background-color: #9BD3AC;
-  border: 2px solid #5CE5D5;
+  background-color: #9DDCFF;
+  border: 5px solid #5CE5D5;
   width: 60%;
   margin: 3% auto 3% auto;
   border-radius: 15px;
@@ -341,6 +341,9 @@ li{
 .submitNew.edit{
   background-color: #9BD3AC;
   padding: .5em;
+}
+.headerButton.view{
+  font-size: 1.25em;
 }
 
 /* INSTRUCTIONS */

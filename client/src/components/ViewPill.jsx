@@ -83,7 +83,7 @@ class ViewPill extends Component {
                                 <span className='editInput-span'><input className='editInput' name='bed_dose' type='text' placeholder={singlePill && singlePill.bed_dose} value={this.props.dose.bed_dose} onChange={this.props.handleChange}></input></span>
                                 </div>
                                 <br/>
-                            <button className='submitNew edit'>Submit Changes</button>
+                            <button className='headerButton view'>Submit Changes</button>
                             </form>
                             <Modal show={this.state.modal} handleClose={this.hideModal}>
                             </Modal>
@@ -102,7 +102,7 @@ class ViewPill extends Component {
                                 <li>Bedtime dose: <span className='doseNumber'>{singlePill && singlePill.bed_dose}</span></li>
                             </ul>  
                         </div>   
-                        <button className='createNew update' onClick={()=>{this.setState({isEdit: singlePill.id})}}>Update</button>
+                        <button className='headerButton view' onClick={()=>{this.setState({isEdit: singlePill.id})}}>Update</button>
                         
                     </>
                     }
