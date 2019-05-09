@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router'
 import { getDose } from '../services/api-helper'
 
+import Modal from './Modal'
+
 
 class ViewPill extends Component {
     constructor(props){
@@ -11,10 +13,11 @@ class ViewPill extends Component {
             singlePill: {},
             currentUser:null,
             isEdit: false,
-            singular: 'pill',
-            plural: 'pills',
+            modal: false,
         }
         this.getDoses=this.getDoses.bind(this)
+        this.showModal=this.showModal.bind(this)
+        this.hideModal=this.hideModal.bind(this)
     }
 
     componentDidMount(){
@@ -23,16 +26,22 @@ class ViewPill extends Component {
         this.props.pillId(this.props.match.params.id)
     }
 
-  async getDoses() {
-    const doses = await getDose(this.state.currentUser)
-    const params = await parseInt(this.props.match.params.id)
-    const singlePill = await doses.find((dose) => dose.pill_id===params)
-    await this.setState({
-        doses: doses,
-        singlePill: singlePill
-    })
-    }
+    async getDoses() {
+        const doses = await getDose(this.state.currentUser)
+        const params = await parseInt(this.props.match.params.id)
+        const singlePill = await doses.find((dose) => dose.pill_id===params)
+        await this.setState({
+            doses: doses,
+            singlePill: singlePill
+        })
+        }
 
+    showModal(){
+        this.setState({modal: true})
+    }
+    hideModal(){
+        this.setState({modal:false})
+    }
 
   render(){
     const params = parseInt(this.props.match.params.id)
@@ -74,10 +83,16 @@ class ViewPill extends Component {
                                 <span className='editInput-span'><input className='editInput' name='bed_dose' type='text' placeholder={singlePill && singlePill.bed_dose} value={this.props.dose.bed_dose} onChange={this.props.handleChange}></input></span>
                                 </div>
                                 <br/>
-                            <button className='submitNew edit'>Submit Changes</button>
+                            <button className='headerButton view'>Submit Changes</button>
                             </form>
-                        
-                            <button className='createNew update' onClick={()=>{this.props.destroyDose(singlePill.id)}}>Delete</button>
+                            <Modal 
+                                show={this.state.modal} 
+                                handleClose={this.hideModal}
+                                handleDelete={this.props.destroyDose}
+                                pillId={singlePill.id}
+                                >
+                            </Modal>
+                            <button className='createNew update' onClick={this.showModal}>Delete</button>
                         </div>
                     </>
                     :
@@ -90,7 +105,7 @@ class ViewPill extends Component {
                                 <li>Bedtime dose: <span className='doseNumber'>{singlePill && singlePill.bed_dose}</span></li>
                             </ul>  
                         </div>   
-                        <button className='createNew update' onClick={()=>{this.setState({isEdit: singlePill.id})}}>Update</button>
+                        <button className='headerButton view' onClick={()=>{this.setState({isEdit: singlePill.id})}}>Update</button>
                         
                     </>
                     }

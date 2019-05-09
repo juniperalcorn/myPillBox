@@ -219,8 +219,8 @@ select{
 .doses{
   height: auto;
   margin: 0 auto;
-  background-color: #9BD3AC;
-  border: 2px solid #5CE5D5;
+  background-color: #9DDCFF;
+  border: 5px solid #5CE5D5;
   width: 60%;
   margin: 3% auto 3% auto;
   border-radius: 15px;
@@ -342,6 +342,9 @@ li{
   background-color: #9BD3AC;
   padding: .5em;
 }
+.headerButton.view{
+  font-size: 1.25em;
+}
 
 /* INSTRUCTIONS */
 .instructions{
@@ -373,6 +376,64 @@ li{
   color: #EA55B1;
 }
 
+/* MODAL */
+.modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+.modal-main{
+  position:fixed;
+  background: #C1CffC;
+  width: 50%;
+  height: auto;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  border-radius: 15px;
+  border: 2px solid #EA55B1;
+}
+.modal-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1.25em;
+  margin: 3%;
+  padding-bottom: 2%;
+  border-bottom: 2px solid black;
+  color: #EA55B1;
+  font-weight: 600;
+}
+.modal-x{
+  font-size: 1em;
+  color: #EA55B1;
+  background-color: #001437;
+  border-radius: 5px;
+}
+.modal-body{
+  height: 3em;
+  margin-top: 3em;
+  font-size: 1.5em;
+  
+}
+.modal-delete{
+  font-size: 1.5em;
+  border-radius: 15px;
+  border: 2px solid #EA55B1;
+  margin-bottom: 1em;
+  padding: 1em;
+  background-color: #6576EA;
+  color: white;
+}
+.display-block{
+  display: block;
+}
+.display-none{
+  display: none;
+}
 
 @media screen and (max-width: 480px) and (min-width: 320px){
 
