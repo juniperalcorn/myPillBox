@@ -69,7 +69,9 @@ class Doses extends Component {
   return (
     <div className="doses">
         <h1 id='doses-header'>{this.props.header} Pills</h1>
-        {this.showDoses()}
+            <div className='showDoses'>
+                {this.showDoses()}
+            </div>  
         <div className='doses-instructions'>Click on a medication for more information, or to edit dose.</div>
     </div>
   );

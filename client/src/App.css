@@ -217,7 +217,7 @@ select{
 
 /*DOSES*/
 .doses{
-  height: auto;
+  height: 70vh;
   margin: 0 auto;
   background-color: #9DDCFF;
   border: 5px solid #5CE5D5;
@@ -229,8 +229,13 @@ select{
   align-items: center;
   color: #00391B;
 }
+.showDoses{
+  overflow: scroll;
+  width: 70%;
+}
 #doses-header{
   color: #392932;
+
 }
 .individual-dose{
   display: flex;
@@ -238,7 +243,7 @@ select{
   justify-content: center;
   align-items: center;
   height: 5.5em;
-  width: 100%;
+  width: 90%;
   margin: 2%;
   margin-bottom: 8%;
   border: 2px solid #5CE5D5;
