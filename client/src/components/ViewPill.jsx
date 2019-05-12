@@ -19,39 +19,30 @@ class ViewPill extends Component {
         this.showModal=this.showModal.bind(this)
         this.hideModal=this.hideModal.bind(this)
         // this.showUpdate=this.showUpdate.bind(this)
-        this.setSinglePill=this.setSinglePill.bind(this)
     }
 
     componentDidMount(){
         this.setState({currentUser:this.props.currentUser})
         this.getDoses()
-        this.setSinglePill()
         this.props.pillId(this.props.match.params.id)
     }
 
     async getDoses() {
         const doses = await getDose(this.props.currentUser)
         const userDoses = await doses.filter(dose=>dose.user_id === this.props.currentUser)
-        // const singlePill = await userDoses.find((dose) => dose.id===params)
+        const params = parseInt(this.props.match.params.id)
+        const singlePill = await userDoses.find(dose=> dose.id===params)
         await this.setState({
             doses: userDoses,
-            // singlePill: singlePill
+            singlePill: singlePill
         })
+        console.log('single pill in viewPill', singlePill)
+        console.log('single pill state in viewPill', this.state.singlePill)
+
         console.log('user in viewPill', this.props.currentUser)
         console.log('doses state in viewPill', this.state.doses)
         }
 
-    async setSinglePill(){
-        const params = await parseInt(this.props.match.params.id)
-        const singlePill = await this.state.doses.find(dose => dose.id===params)
-        await this.setState({
-            singlePill
-        })
-        console.log('params', params)
-        console.log('single pill in viewPill', singlePill)
-        console.log('single pill state in viewPill', this.state.singlePill)
-
-    }
     showModal(){
         this.setState({modal: true})
     }
@@ -68,7 +59,7 @@ class ViewPill extends Component {
 
   render(){
     const params = parseInt(this.props.match.params.id)
-    const singlePill = this.state.doses.find((dose) => dose.pill_id===params)
+    const singlePill = this.state.doses.find(dose => dose.id===params)
     console.log('render singlePill', singlePill)
         return (
             <div className="doses viewPill">
