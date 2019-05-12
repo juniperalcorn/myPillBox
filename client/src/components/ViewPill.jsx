@@ -24,7 +24,6 @@ class ViewPill extends Component {
     componentDidMount(){
         this.setState({currentUser:this.props.currentUser})
         this.getDoses()
-        this.props.pillId(this.props.match.params.id)
     }
 
     async getDoses() {
@@ -36,7 +35,7 @@ class ViewPill extends Component {
             doses: userDoses,
             singlePill: singlePill
         })
-        console.log('single pill in viewPill', singlePill)
+        this.props.pillId(this.state.singlePill.pill_id)
         console.log('single pill state in viewPill', this.state.singlePill)
 
         console.log('user in viewPill', this.props.currentUser)

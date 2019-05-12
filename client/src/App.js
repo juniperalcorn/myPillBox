@@ -286,14 +286,13 @@ async updateDoseForm(userId, doseId){
       bed_dose:'',
     }
   }))
-  // window.location.reload()
+  window.location.reload()
 }
 
 updateFormPillSelect(params){
-  const paramsId = parseInt(params)
   this.setState({
     dose:{
-      pill_id: paramsId
+      pill_id: params
     }
   })
 }
