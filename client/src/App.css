@@ -268,7 +268,18 @@ a {
 }
 
 /* VIEW PILL */
-
+.doses.viewPill{
+  height: auto;
+}
+.doseContain{
+  height: auto;
+}
+.doseList{
+  height: 50vh;
+}
+.doseList.edit{
+  height: auto;
+}
 .viewPill-h2{
   font-weight: 600;
   font-size: 2em;

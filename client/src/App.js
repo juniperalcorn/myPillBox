@@ -190,6 +190,9 @@ async handleLogin(){
   })
   localStorage.setItem('jwt', userData.token)
   this.props.history.push('/home')
+  await this.setDate()
+  await this.setTime()
+  this.getDoses()
 }
 
 async handleRegister(e) {

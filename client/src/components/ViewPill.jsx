@@ -47,7 +47,7 @@ class ViewPill extends Component {
     const params = parseInt(this.props.match.params.id)
     const singlePill = this.state.doses.find((dose) => dose.pill_id===params)
         return (
-            <div className="doses">
+            <div className="doses viewPill">
                 <h2 className='viewPill-h2'>Pill Detail: {singlePill && singlePill.pill.name}, {singlePill && singlePill.pill.mg}mg</h2>
                 
                 <div className='doseContain'>
