@@ -81,6 +81,8 @@ export const updateDose = (data, userId, doseId) => {
       }
       return fetch(`${baseUrl}/users/${userId}/doses/${doseId}`, opts)
       .then(resp => resp.json())
+      .then(resp=> console.log(resp))
+      .catch(err => console.log(err))
 }
 
 export const deleteDose = (userId, doseId) => {

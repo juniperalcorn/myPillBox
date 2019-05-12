@@ -16,7 +16,6 @@ import Pillbox from './components/Pillbox'
 import AddPill from './components/AddPill'
 import Doses from './components/Doses'
 import ViewPill from'./components/ViewPill'
-import UpdateDose from './components/UpdateDose'
 
 class App extends Component {
   constructor(props){
@@ -56,13 +55,6 @@ class App extends Component {
         bed_dose:'',
       },
       pillToView:null,
-      updateInfo:{
-        dose_id:null,
-        am_dose:'',
-        mid_dose:'',
-        pm_dose:'',
-        bed_dose:'',
-      }
     }
     //bind functions here
     this.handleAuthChange=this.handleAuthChange.bind(this)
@@ -87,7 +79,7 @@ class App extends Component {
     this.switchLoginToRegister=this.switchLoginToRegister.bind(this)
     this.switchRegisterToLogin=this.switchRegisterToLogin.bind(this)
 
-    this.getUser=this.getUser.bind(this)
+    // this.getUser=this.getUser.bind(this)
   }
 
   async componentDidMount(){
@@ -101,8 +93,9 @@ class App extends Component {
         currentUser: userData,
         isLoggedIn:true
       })
+      console.log(userData)
       this.getDoses()
-      this.getUser()
+      // this.getUser()
     }
   }
 
@@ -236,17 +229,21 @@ goToNewPill(){
 //-------API
 async getDoses() {
   const doses = await getDose(this.state.currentUser.user_id)
-  console.log('getDoses app.js', doses)
   const userDoses = doses.filter(dose=>dose.user_id === this.state.currentUser.user_id)
-  console.log('user doses', userDoses)
   this.setState({
     doses:userDoses
   })
+  console.log('userDoses, set state in app.js', this.state.doses)
+
 }
 
 async getUser(){
   const user = await getUserInfo(this.state.currentUser.user_id)
   console.log('get user in app.js', user.doses)
+  this.setState({
+    doses: user.doses
+  })
+  console.log('after get user, set state in app.js', this.state.doses)
 }
 
 async newDose(e){
@@ -266,6 +263,9 @@ async newDose(e){
 }
 
 async updateDoseForm(userId, doseId){
+  console.log('updateDoseForm data', this.state.dose)
+  console.log('updateDoseForm user', userId)
+  console.log('updateDoseForm dose', doseId)
   const doseUpdate = await updateDose(this.state.dose, userId, doseId)
   this.setState(prevState=>({
     doses: prevState.doses.map(el=> el.id === doseId ? doseUpdate : el),
@@ -281,10 +281,9 @@ async updateDoseForm(userId, doseId){
 }
 
 updateFormPillSelect(params){
-  const paramsId = parseInt(params)
   this.setState({
     dose:{
-      pill_id: paramsId
+      pill_id: params
     }
   })
 }
@@ -310,6 +309,7 @@ handlePillChange(e){
       [name]:value
     }
   }))
+  console.log('handleChange', this.state.dose)
 }
 
 choosePillToView(e){
@@ -434,7 +434,6 @@ async destroyDose(doseId){
           <Route path='/viewpill/:id' render={(props)=>(
             <ViewPill
               {...props}
-              pills={this.state.pills}
               doses={this.state.doses}
               getDoses={this.getDoses}
               currentUser={this.state.currentUser.user_id}
@@ -445,15 +444,7 @@ async destroyDose(doseId){
               pillId={this.updateFormPillSelect}
             />
           )}/>
-          
-          <Route path='updatedose/pill/:id' render={(props)=>(
-            <UpdateDose 
-            {...props}
-            pills={this.state.pills}
-            doses={this.state.doses}
-            getPillId={this.updateFormPillSelect}
-            />
-          )}/>
+
         </Switch>
       </div>
     );

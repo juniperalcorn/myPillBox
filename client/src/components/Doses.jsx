@@ -18,7 +18,7 @@ class Doses extends Component {
               <div>{
                   dose.am_dose>=1 
                   ? 
-                  <Link to={`/viewpill/${dose.pill_id}`} key={dose.id} >
+                  <Link to={`/viewpill/${dose.id}`} key={dose.id} >
                     <div className='individual-dose'><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.am_dose} {dose.pill.name}</div>
                   </Link>
                   : 
@@ -31,7 +31,7 @@ class Doses extends Component {
             <div>{
             dose.mid_dose>=1
             ?
-            <Link to={`/viewpill/${dose.pill_id}`} key={dose.id} >
+            <Link to={`/viewpill/${dose.id}`} key={dose.id} >
                 <div className='individual-dose'><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.mid_dose} {dose.pill.name}</div>
             </Link>
             :
@@ -43,7 +43,7 @@ class Doses extends Component {
            <div>{
             dose.pm_dose>=1
            ?
-            <Link to={`/viewpill/${dose.pill_id}`} key={dose.id} >
+            <Link to={`/viewpill/${dose.id}`} key={dose.id} >
                 <div className='individual-dose'><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.pm_dose} {dose.pill.name}</div>
             </Link>
             :
@@ -55,7 +55,7 @@ class Doses extends Component {
            <div>{
             dose.bed_dose>=1
             ?
-            <Link to={`/viewpill/${dose.pill_id}`} key={dose.id} >
+            <Link to={`/viewpill/${dose.id}`} key={dose.id} >
                 <div className='individual-dose'><img src={dose.pill.img} alt={dose.pill.name}/>Take {dose.bed_dose} {dose.pill.name}</div>
             </Link>
             :
