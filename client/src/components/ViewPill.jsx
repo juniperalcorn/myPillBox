@@ -34,6 +34,8 @@ class ViewPill extends Component {
             doses: doses,
             singlePill: singlePill
         })
+        console.log('single pill', singlePill)
+        console.log('state', this.state.singlePill)
         }
 
     showModal(){
