@@ -7,7 +7,7 @@ class Modal extends Component {
     }
     render(){
         const showHideModal = this.props.show ? 'modal display-block' : 'modal display-none'
-        const pillId=this.props.pillId
+        const doseId=this.props.doseId
         return(
             <div className={showHideModal}>
                 <div className = 'modal-main'>
@@ -20,7 +20,7 @@ class Modal extends Component {
                     </div>
 
                     <button className='modal-delete' onClick={()=>{
-                        this.props.handleDelete(pillId)
+                        this.props.handleDelete(doseId)
                         this.props.handleClose()
                     }}>Delete Medication From PillBox</button>
                 </div>

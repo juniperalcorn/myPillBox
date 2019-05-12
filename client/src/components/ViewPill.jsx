@@ -134,7 +134,7 @@ class ViewPill extends Component {
                                 show={this.state.modal} 
                                 handleClose={this.hideModal}
                                 handleDelete={this.props.destroyDose}
-                                // pillId={this.state.singlePill.id}
+                                doseId={this.state.singlePill.id}
                                 >
                             </Modal>
                             <button className='createNew update' onClick={this.showModal}>Delete</button>
