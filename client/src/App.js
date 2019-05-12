@@ -16,8 +16,6 @@ import Pillbox from './components/Pillbox'
 import AddPill from './components/AddPill'
 import Doses from './components/Doses'
 import ViewPill from'./components/ViewPill'
-import UpdateDose from './components/UpdateDose'
-import PillDetail from './components/PillDetail'
 
 class App extends Component {
   constructor(props){
@@ -57,13 +55,6 @@ class App extends Component {
         bed_dose:'',
       },
       pillToView:null,
-      updateInfo:{
-        dose_id:null,
-        am_dose:'',
-        mid_dose:'',
-        pm_dose:'',
-        bed_dose:'',
-      }
     }
     //bind functions here
     this.handleAuthChange=this.handleAuthChange.bind(this)
@@ -454,23 +445,6 @@ async destroyDose(doseId){
             />
           )}/>
 
-          <Route exact path='/pilldetail/:id' render={(props)=>(
-            <PillDetail 
-              
-              doses={this.state.doses}
-              currentUserId={this.state.currentUser.user_id}
-              {...props}
-            />
-          )}/>
-          
-          <Route path='updatedose/pill/:id' render={(props)=>(
-            <UpdateDose 
-            {...props}
-            pills={this.state.pills}
-            doses={this.state.doses}
-            getPillId={this.updateFormPillSelect}
-            />
-          )}/>
         </Switch>
       </div>
     );
